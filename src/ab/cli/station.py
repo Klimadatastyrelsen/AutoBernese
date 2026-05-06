@@ -95,7 +95,7 @@ def sitelogs2sta(
     1.  No arguments: Use input provided in common user configuration
         (`autobernese.yaml`).
 
-    2.  Use the flag `-c` to suppply a name for a campaign whose configuration
+    2.  Use the flag `-c` to supply a name for a campaign whose configuration
         (`campaign.yaml`) contains to create a STA file from standard settings
         in campaign-specific configuration.
 
@@ -155,33 +155,45 @@ def sitelogs2sta(
 
     """
     arguments: dict[str, Any] | None = None
+    # get arguments from configuration files
     if config is not None:
         ifname = config.absolute()
         msg = f"Create STA file with arguments in file {ifname} ..."
         log.info(msg)
         print(msg)
         arguments = configuration.load(ifname).get("station")
-
-    elif sitelogs:
-        log.info(f"Create STA file from given arguments ...")
-        arguments = dict(
-            sitelogs=list(sitelogs),
-            individually_calibrated=individually_calibrated,
-            output_sta_file=output_filename,
-            skip_period=skip_period,
-        )
-
     elif name is not None:
-        msg = f"Create STA file from arguments in configuration for campaing {name} ..."
+        msg = f"Create STA file from arguments in configuration for campaign {name} ..."
         log.info(msg)
         print(msg)
         arguments = _campaign.load(name).get("station")
-
+    elif sitelogs:
+        msg = f"Create STA file from command-line-supplied sitelogs..."
+        log.info(msg)
+        print(msg)
+        arguments["sitelogs"] = list(sitelogs)
     elif configuration.load().get("station") is not None:
         msg = f"Create STA file from arguments in the common user configuration `autobernese.yaml` ..."
         log.info(msg)
         print(msg)
         arguments = configuration.load().get("station")
+
+    # overwrite or complement with arguments from the command line
+    if individually_calibrated:
+        log.info(
+            f"Using command-line-supplied value for parameter individually_calibrated = {individually_calibrated}..."
+        )
+        arguments["individually_calibrated"] = individually_calibrated
+    if output_sta_file:
+        log.info(
+            f"Create STA file with command-line-supplied parameter output_sta_file = {output_filename}..."
+        )
+        arguments["output_sta_file"] = output_filename
+    if skip_period:
+        log.info(
+            f"Using command-line-supplied value for parameter skip_period = {skip_period}..."
+        )
+        arguments["skip_period"] = skip_period
 
     if arguments is None:
         msg = f"No arguments found ..."
