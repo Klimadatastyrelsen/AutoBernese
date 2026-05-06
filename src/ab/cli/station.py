@@ -30,6 +30,9 @@ def station() -> None:
     """
 
 
+DEFAULT_OUTPUT_FILEPATH = Path(".").resolve() / "sitelogs.STA"
+
+
 @station.command
 @_options.campaign
 @click.option(
@@ -58,7 +61,7 @@ def station() -> None:
     "-o",
     "output_filename",
     required=False,
-    default=Path(".").resolve() / "sitelogs.STA",
+    default=DEFAULT_OUTPUT_FILEPATH,
     type=Path,
     help="Path to optional output path and filename for the STA file.",
 )
@@ -74,9 +77,8 @@ def station() -> None:
     "-s",
     "skip_period",
     required=False,
-    default=None,
     type=click.Choice(["day", "week"]),
-    help="Choose time period to skip on station events in TYPE003 entries. Default is None. Can be set to 'day' or 'week'.",
+    help="Choose time period to skip on station events in TYPE003 entries. Can be set to 'day' or 'week'. If not set, TYPE003 section is skipped.",
 )
 def sitelogs2sta(
     name: str,
@@ -184,11 +186,15 @@ def sitelogs2sta(
         log.info(msg)
         print(msg)
         arguments["individually_calibrated"] = individually_calibrated
-    if output_filename:
+
+    if output_filename != DEFAULT_OUTPUT_FILEPATH:
         msg = f"Using command-line-supplied parameter output_sta_file = {output_filename}..."
         log.info(msg)
         print(msg)
         arguments["output_sta_file"] = output_filename
+    elif not arguments["output_sta_file"]:
+        arguments["output_sta_file"] = DEFAULT_OUTPUT_FILEPATH
+
     if skip_period:
         msg = f"Using command-line-supplied value for parameter skip_period = {skip_period}..."
         log.info(msg)
