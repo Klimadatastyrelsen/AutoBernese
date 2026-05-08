@@ -1,0 +1,150 @@
+metadata:
+  version: &version 0.5.0
+  username: &username USERNAME
+  created: &created 2024-04-08
+  template: &template example
+  campaign: &campaign EXAMPLE
+  beg: &beg 2019-02-13
+  end: &end 2019-02-14
+
+custom:
+  dates: &dates
+  - 2019-02-13
+  - 2019-02-14
+  - 2020-06-27
+  - 2020-06-28
+  - 2021-04-05
+  - 2021-04-06
+
+tasks:
+
+- identifier: PPP
+  description: Precise-Point Positioning
+  run: RunBPE
+  arguments:
+    pcf_file: PPP
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'PPP_{date.doy:0>3d}0'
+    status: 'PPP_{date.doy:0>3d}0.RUN'
+    taskid: 'PPP_{date.doy:0>3d}0'
+  parameters:
+    date: dates
+
+- identifier: RNX2SNX
+  description: RINEX to SINEX
+  run: RunBPE
+  arguments:
+    pcf_file: RNX2SNX
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'RNX2SNX_{date.doy:0>3d}0'
+    status: 'RNX2SNX_{date.doy:0>3d}0.RUN'
+    taskid: 'R2S_{date.doy:0>3d}0'
+  parameters:
+    date: dates
+
+- identifier: BASTST
+  description: |-
+    Baseline by baseline processing for trouble shooting
+  run: RunBPE
+  arguments:
+    pcf_file: BASTST
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'BASTST_{date.doy:0>3d}0'
+    status: 'BASTST_{date.doy:0>3d}0.RUN'
+    taskid: 'BASTST_{date.doy:0>3d}0'
+  parameters:
+    date: dates
+
+- identifier: CLKDET
+  description: |-
+    Zero-difference network solution providing clock corrections
+  run: RunBPE
+  arguments:
+    pcf_file: CLKDET
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'CLKDET_{date.doy:0>3d}0'
+    status: 'CLKDET_{date.doy:0>3d}0.RUN'
+    taskid: 'CLKDET_{date.doy:0>3d}0'
+  parameters:
+    date: dates
+
+- identifier: IONDET
+  description: |-
+    Zero-difference network solution providing station-wise, regional, or global
+    ionosphere maps and the related biases
+  run: RunBPE
+  arguments:
+    pcf_file: IONDET
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'IONDET_{date.doy:0>3d}0'
+    status: 'IONDET_{date.doy:0>3d}0.RUN'
+    taskid: 'IONDET_{date.doy:0>3d}0'
+  parameters:
+    date: dates
+
+- identifier: LEOPOD
+  description: |-
+    Precise Orbit Determination for a Low Earth Orbiting Satellites based on
+    on-board GPS-measurements with phase ambiguity resolution
+  run: RunBPE
+  arguments:
+    pcf_file: LEOPOD
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'LEOPOD_{date.doy:0>3d}0'
+    status: 'LEOPOD_{date.doy:0>3d}0.RUN'
+    taskid: 'LEOPOD_{date.doy:0>3d}0'
+  parameters:
+    date: !DateRange {beg: *beg, end: *end}
+
+- identifier: SLRVAL
+  description: |-
+    Validation of an existing GNSS or LEO orbit using SLR measurements
+  run: RunBPE
+  arguments:
+    pcf_file: SLRVAL
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'SLRVAL_{date.doy:0>3d}0'
+    status: 'SLRVAL_{date.doy:0>3d}0.RUN'
+    taskid: 'SLRVAL_{date.doy:0>3d}0'
+  parameters:
+    date: dates
+
+- identifier: ITRF
+  description: |-
+    Derives a coordinate and linear velocity approximation from the ITRF
+    solution containing non-linear PSD corrections
+  run: RunBPE
+  arguments:
+    pcf_file: ITRF
+    campaign: *campaign
+    year: '{date.year}'
+    session: '{date.doy:0>3d}0'
+    sysout: 'ITRF_{date.doy:0>3d}0'
+    status: 'ITRF_{date.doy:0>3d}0.RUN'
+    taskid: 'ITRF_{date.doy:0>3d}0'
+  parameters:
+    date: dates
+
+sources:
+
+- identifier: ITRF14
+  description: IERS data needed for the EXAMPLE campaign
+  url: https://datacenter.iers.org/products/reference-systems/terrestrial/itrf/itrf2014/
+  filenames:
+  - ITRF2014-IGS-TRF.SNX.gz  # 1.4 GB
+  - ITRF2014-psd-gnss.dat  # 38 KB
+  destination: !Path [*D, ITRF14]

@@ -1,0 +1,2603 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Joachim Mortensen">
+      
+      
+      
+        <link rel="prev" href="../quick-start/">
+      
+      
+        <link rel="next" href="../configuration-files/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Command-line reference - GNSS-Process Automation with Bernese GNSS Software</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/asciinema-player.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#running-autobernese" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GNSS-Process Automation with Bernese GNSS Software" class="md-header__button md-logo" aria-label="GNSS-Process Automation with Bernese GNSS Software" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GNSS-Process Automation with Bernese GNSS Software
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Command-line reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SDFIdk/AutoBernese" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    AutoBernese
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GNSS-Process Automation with Bernese GNSS Software" class="md-nav__button md-logo" aria-label="GNSS-Process Automation with Bernese GNSS Software" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    GNSS-Process Automation with Bernese GNSS Software
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SDFIdk/AutoBernese" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    AutoBernese
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User manual
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User manual
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-autobernese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install AutoBernese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command-line reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command-line reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#running-autobernese" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running AutoBernese
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running AutoBernese">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab --version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-bsw-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab --bsw-release
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-rendered-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show rendered configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Show rendered configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-config-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab config &lt;section&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download sources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab download
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-download-c-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab download -c &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#campaign-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campaign management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Campaign management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign ls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-ls-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign ls -v
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-templates-template-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign templates &lt;template-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign create
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-sources-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign sources &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-tasks-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign tasks &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-run-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign run &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-clean-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign clean &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-register-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign register &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-unregister-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign unregister &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#station-related-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Station-related utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Station-related utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-sta-file-from-sitelogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create STA file from sitelogs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create STA file from sitelogs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta-c-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta -c &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta-f-custom-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta -f &lt;custom-configuration-file&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta-i-sitelog-k-station-id-o-sta-file-l-station_id_length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta -i &lt;sitelog&gt; -k &lt;station-id&gt; -o &lt;STA-file&gt; -l &lt;station_id_length&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine-troposphere-hour-files-to-day-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combine troposphere hour files to day files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combine troposphere hour files to day files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-troposphere-build-i-ipath-o-opath-b-beg-e-end-h-iformat-d-oformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab troposphere build -i &lt;ipath&gt; -o &lt;opath&gt; -b &lt;beg&gt; -e &lt;end&gt; -h &lt;iformat&gt; -d &lt;oformat&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-troposphere-status-b-beg-e-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab troposphere status -b &lt;beg&gt; -e &lt;end&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-date-information-for-a-specific-date-or-gps-week" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show date information for a specific date or GPS week
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Show date information for a specific date or GPS week">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-dateinfo-ymd-ymd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab dateinfo ymd &lt;ymd&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-dateinfo-ydoy-ydoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab dateinfo ydoy &lt;ydoy&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-dateinfo-gpsweek-gps-week" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab dateinfo gpsweek &lt;gps-week&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tailing-the-autobernese-log-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tailing the AutoBernese log file
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../download-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribute
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/system-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#running-autobernese" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running AutoBernese
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running AutoBernese">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab --version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-bsw-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab --bsw-release
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-rendered-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show rendered configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Show rendered configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-config-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab config &lt;section&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download sources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab download
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-download-c-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab download -c &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#campaign-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campaign management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Campaign management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign ls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-ls-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign ls -v
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-templates-template-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign templates &lt;template-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign create
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-sources-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign sources &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-tasks-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign tasks &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-run-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign run &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-clean-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign clean &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-register-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign register &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-campaign-unregister-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab campaign unregister &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#station-related-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Station-related utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Station-related utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-sta-file-from-sitelogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create STA file from sitelogs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create STA file from sitelogs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta-c-campaign-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta -c &lt;campaign-name&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta-f-custom-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta -f &lt;custom-configuration-file&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-station-sitelogs2sta-i-sitelog-k-station-id-o-sta-file-l-station_id_length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab station sitelogs2sta -i &lt;sitelog&gt; -k &lt;station-id&gt; -o &lt;STA-file&gt; -l &lt;station_id_length&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combine-troposphere-hour-files-to-day-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combine troposphere hour files to day files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combine troposphere hour files to day files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-troposphere-build-i-ipath-o-opath-b-beg-e-end-h-iformat-d-oformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab troposphere build -i &lt;ipath&gt; -o &lt;opath&gt; -b &lt;beg&gt; -e &lt;end&gt; -h &lt;iformat&gt; -d &lt;oformat&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-troposphere-status-b-beg-e-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab troposphere status -b &lt;beg&gt; -e &lt;end&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#show-date-information-for-a-specific-date-or-gps-week" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Show date information for a specific date or GPS week
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Show date information for a specific date or GPS week">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ab-dateinfo-ymd-ymd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab dateinfo ymd &lt;ymd&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-dateinfo-ydoy-ydoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab dateinfo ydoy &lt;ydoy&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-dateinfo-gpsweek-gps-week" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ab dateinfo gpsweek &lt;gps-week&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tailing-the-autobernese-log-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tailing the AutoBernese log file
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Command-line reference</h1>
+
+<h2 id="running-autobernese">Running AutoBernese<a class="headerlink" href="#running-autobernese" title="Permanent link">¶</a></h2>
+<p>With AutoBernese installed, one have a new command <code>ab</code> available, which lets
+one explore the rest of the available functionality based on the help system. By
+itself it also does a few house-hold things. These latter side effects are
+described below.</p>
+<h3 id="ab"><code>ab</code><a class="headerlink" href="#ab" title="Permanent link">¶</a></h3>
+<p>Prints out help text to the terminal, describing the core themes of the
+application and showing the available sub commands.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ab
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Usage: ab [OPTIONS] COMMAND [ARGS]...
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  AutoBernese is a tool that can
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  1.  Create Bernese campaigns using the built-in template system.
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  2.  Download and organise data for general or campaign-specific use.
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  3.  Run the BPE for campaigns with an AutoBernese configuration.
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>  4.  Do various other things related to GNSS-data processing.
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>Options:
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  --version
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>  --bsw-release
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>  --help         Show this message and exit.
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>Commands:
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>  campaign (c)   Create campaigns and manage campaign-specific sources and...
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>  config         Show all or specified configuration section(s).
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>  dateinfo (dt)  Print date info on date, year+doy or GPS week.
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>  download       Download all sources in the autobernese configuration file.
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>  logs           Follow log file (run `tail -f path/to/logfile.log`).
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>  qc             Quality-control measures
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>  station        Stand-alone tools for station data.
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>  troposphere    Stand-alone tools for troposphere data.
+</code></pre></div>
+<p><strong>Side Effects</strong></p>
+<p>The command itself is a script that imports the AutoBernese Python package.</p>
+<p>When run, it creates a <em>runtime directory</em> at the same directory level as the
+Bernese installation directory <code>BERN54</code>, i.e. in the parent directory of the
+<code>$C</code>.</p>
+<p>The directory tree can be seen below:</p>
+<div class="highlight"><span class="filename">AutoBernese runtime directory is in the parent directory of `$C`</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/path/to/environment
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── autobernese     # AutoBernese runtime directory automatically
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>│                   # created one level up from Bernese-installation directory
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>│
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>├── BERN54          # Bernese installation directory,
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│                   # a.k.a. `$C` in BERN54/LOADGPS.setvar
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>└── ...
+</code></pre></div>
+<p>When running <code>ab</code> or any sub command, the following happens:</p>
+<ul>
+<li>
+<p>The built-in configuration file is read, and any user-configuration file is
+    loaded and allowed sections override those in the built-in configuration.
+    This combined configuration is the <em>rendered AutoBernese configuration</em>. Its
+    settings are fixed during the entire runtime of any command that is run.</p>
+</li>
+<li>
+<p>Before any other sub command is run, AutoBernese makes sure that a directory
+    <code>autobernese</code> is present in the environment directory. If not, the directory
+    is created, and the AutoBernese log file <code>autobernese.log</code> is created.</p>
+</li>
+<li>
+<p>In addition, the command makes sure that all variables exported in
+    <code>LOADGPS.setvar</code> exist in the shell environment. If not, a warning is shown,
+    and the program exits.</p>
+</li>
+</ul>
+<p>The rendered AutoBernese configuration thus provides a way to access paths and
+environment variables set by and derived from the exported variables set in the
+LOADGPS.setvar file. These are also available in the user-defined configuration
+files and so allows for a seamless integration with the activated Bernese
+environment.</p>
+<h3 id="ab-version"><code>ab --version</code><a class="headerlink" href="#ab-version" title="Permanent link">¶</a></h3>
+<p>This command prints the current software version of AutoBernese.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ab<span class="w"> </span>--version
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>1.0.1
+</code></pre></div>
+<h3 id="ab-bsw-release"><code>ab --bsw-release</code><a class="headerlink" href="#ab-bsw-release" title="Permanent link">¶</a></h3>
+<p>This command prints the current software version and release of the activated
+Bernese installation in JSON format.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ab<span class="w"> </span>--bsw-release
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Bernese 5.4 (2024-11-11)
+</code></pre></div>
+<h2 id="show-rendered-configuration">Show rendered configuration<a class="headerlink" href="#show-rendered-configuration" title="Permanent link">¶</a></h2>
+<p>AutoBernese uses a built-in configuration file to integrate seamlessly into the
+given activated Bernese environment. Most of the functionality of AutoBernese
+relies on some configuration setting.</p>
+<p>The configuration format is a YAML whose syntax features make it highly useful.
+These features include re-using content in one place of the YAML document in
+some other part of the same document. Read more about the format and relevant
+data models on <a href="../configuration-files/">the configuration-file page</a>.</p>
+<p>The static document, while being easy to create this way, does
+make it harder to read and find potential errors in, when the data structure in
+the document becomes larger or more complex in what is re-used, and how.</p>
+<p>The following commands lets one have a look at the rendered AutoBernese
+configuration file.</p>
+<h3 id="ab-config"><code>ab config</code><a class="headerlink" href="#ab-config" title="Permanent link">¶</a></h3>
+<p>Look at the rendered AutoBernese configuration file, where one can see the
+Bernese-installation environment that AutoBernese has access to.</p>
+<!-- The following command prints the content of the section [`bsw_env`]
+of the AutoBernese-configuration file containing the environment variables that
+the software uses: -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Configuration file segment</label><label for="__tabbed_1_2">Rendered configuration</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span>
+<span class="normal"><a href="#__codelineno-7-26">26</a></span>
+<span class="normal"><a href="#__codelineno-7-27">27</a></span>
+<span class="normal"><a href="#__codelineno-7-28">28</a></span>
+<span class="normal"><a href="#__codelineno-7-29">29</a></span>
+<span class="normal"><a href="#__codelineno-7-30">30</a></span>
+<span class="normal"><a href="#__codelineno-7-31">31</a></span>
+<span class="normal"><a href="#__codelineno-7-32">32</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># Bernese GNSS Software [BSW] environment variables available after 'source'ing</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="c1"># the shell script `LOADGPS.setvar` in the root of the installation directory.</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nt">bsw_env</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="c1"># Installation directory</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="nt">C</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;C</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">C</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">  </span><span class="c1"># Bernese documentation files</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">  </span><span class="nt">DOC</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;DOC</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DOC</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">  </span><span class="c1"># Built-in Bernese program panels</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">  </span><span class="nt">PAN</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;PAN</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PAN</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">  </span><span class="c1"># Global model files used by Bernese programs</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">  </span><span class="nt">MODEL</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;MODEL</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">  </span><span class="c1"># Global configuration file used by Bernese programs</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">  </span><span class="nt">CONFIG</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;CONFIG</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIG</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">  </span><span class="c1"># DATAPOOL directory</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">  </span><span class="nt">D</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;D</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">D</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22"></a>
+<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">  </span><span class="c1"># CAMPAIGN directory</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">  </span><span class="nt">P</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;P</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">P</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25"></a>
+<a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">  </span><span class="c1"># SAVEDISK directory</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="w">  </span><span class="nt">S</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;S</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">S</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28"></a>
+<a id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="w">  </span><span class="c1"># User directory</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">  </span><span class="nt">U</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;U</span><span class="w"> </span><span class="kt">!ENV</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">U</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31"></a>
+<a id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="c1"># (...)</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ab<span class="w"> </span>config
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="s1">'bsw_env'</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="s1">'C'</span><span class="p">:</span> <span class="s1">'/home/bsw/prod/BERN54'</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        <span class="s1">'DOC'</span><span class="p">:</span> <span class="s1">'/home/bsw/prod/BERN54/SUPGUI/DOC'</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        <span class="s1">'PAN'</span><span class="p">:</span> <span class="s1">'/home/bsw/prod/BERN54/SUPGUI/PAN'</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="s1">'MODEL'</span><span class="p">:</span> <span class="s1">'/home/bsw/prod/BERN54/GLOBAL/MODEL'</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        <span class="s1">'CONFIG'</span><span class="p">:</span> <span class="s1">'/home/bsw/prod/BERN54/GLOBAL/CONFIG'</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>        <span class="s1">'D'</span><span class="p">:</span> <span class="s1">'/mnt/refgps/bsw/dev/DATAPOOL'</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>        <span class="s1">'P'</span><span class="p">:</span> <span class="s1">'/home/bsw/prod/data/CAMPAIGN54'</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="s1">'S'</span><span class="p">:</span> <span class="s1">'/mnt/refgps/bsw/dev/SAVEDISK'</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>        <span class="s1">'U'</span><span class="p">:</span> <span class="s1">'/home/username/bsw/dev/user'</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>        <span class="s1">'T'</span><span class="p">:</span> <span class="s1">'/home/username/bsw/dev/temp'</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="p">},</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>    <span class="c1"># (...)</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>As seen above, one see that not all the variables set in BSW's <code>LOADGPS.setvar</code>
+script are included, but this is all that AutoBernese is using for now.</p>
+</div>
+<h3 id="ab-config-section"><code>ab config &lt;section&gt;</code><a class="headerlink" href="#ab-config-section" title="Permanent link">¶</a></h3>
+<p>Adding the name of one of the outer-most keys in the YAML configuration, only
+the content of <code>&lt;section&gt;</code> will be shown.</p>
+<p>Available sections are</p>
+<div class="highlight"><span class="filename">Available sections in the rendered configuration</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Bernese GNSS Software [BSW] environment variables available after 'source'ing</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># the shell script `LOADGPS.setvar` in the root of the installation directory.</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">bsw_env</span><span class="p">:</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="c1"># (...)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># Specific files in the Bernese environment that we need to access</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nt">bsw_files</span><span class="p">:</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="c1"># (...)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># We define the environment root directory as the one containing the BSW</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># installation. It is assumed to be a directory that each user can can write to.</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;env</span><span class="w"> </span><span class="kt">!Parent</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*C</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># AutoBernese runtime environment</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nt">runtime</span><span class="p">:</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">  </span><span class="c1"># (...)</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="c1">## Default sections that can be overriden by the user</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="nt">station</span><span class="p">:</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">  </span><span class="c1"># (...)</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="nt">campaign</span><span class="p">:</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">  </span><span class="c1"># (...)</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="nt">sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<p><strong>Example</strong></p>
+<p>The following command prints the content of the section [<code>runtime</code>] of the
+AutoBernese-configuration file containing the internal settings for the
+AutoBernese runtime directory:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Configuration file segment</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-41">41</a></span>
+<span class="normal"><a href="#__codelineno-11-42">42</a></span>
+<span class="normal"><a href="#__codelineno-11-43">43</a></span>
+<span class="normal"><a href="#__codelineno-11-44">44</a></span>
+<span class="normal"><a href="#__codelineno-11-45">45</a></span>
+<span class="normal"><a href="#__codelineno-11-46">46</a></span>
+<span class="normal"><a href="#__codelineno-11-47">47</a></span>
+<span class="normal"><a href="#__codelineno-11-48">48</a></span>
+<span class="normal"><a href="#__codelineno-11-49">49</a></span>
+<span class="normal"><a href="#__codelineno-11-50">50</a></span>
+<span class="normal"><a href="#__codelineno-11-51">51</a></span>
+<span class="normal"><a href="#__codelineno-11-52">52</a></span>
+<span class="normal"><a href="#__codelineno-11-53">53</a></span>
+<span class="normal"><a href="#__codelineno-11-54">54</a></span>
+<span class="normal"><a href="#__codelineno-11-55">55</a></span>
+<span class="normal"><a href="#__codelineno-11-56">56</a></span>
+<span class="normal"><a href="#__codelineno-11-57">57</a></span>
+<span class="normal"><a href="#__codelineno-11-58">58</a></span>
+<span class="normal"><a href="#__codelineno-11-59">59</a></span>
+<span class="normal"><a href="#__codelineno-11-60">60</a></span>
+<span class="normal"><a href="#__codelineno-11-61">61</a></span>
+<span class="normal"><a href="#__codelineno-11-62">62</a></span>
+<span class="normal"><a href="#__codelineno-11-63">63</a></span>
+<span class="normal"><a href="#__codelineno-11-64">64</a></span>
+<span class="normal"><a href="#__codelineno-11-65">65</a></span>
+<span class="normal"><a href="#__codelineno-11-66">66</a></span>
+<span class="normal"><a href="#__codelineno-11-67">67</a></span>
+<span class="normal"><a href="#__codelineno-11-68">68</a></span>
+<span class="normal"><a href="#__codelineno-11-69">69</a></span>
+<span class="normal"><a href="#__codelineno-11-70">70</a></span>
+<span class="normal"><a href="#__codelineno-11-71">71</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-41" name="__codelineno-11-41"></a><span class="c1"># (...)</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42"></a>
+<a id="__codelineno-11-43" name="__codelineno-11-43"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clean</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">troposphere</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">campaign</span>
+<a id="__codelineno-11-46" name="__codelineno-11-46"></a>
+<a id="__codelineno-11-47" name="__codelineno-11-47"></a><span class="c1"># Default content for the above sections_to_override. These sections can be</span>
+<a id="__codelineno-11-48" name="__codelineno-11-48"></a><span class="c1"># overriden by the user in the general configuration file autobernese.yaml or in</span>
+<a id="__codelineno-11-49" name="__codelineno-11-49"></a><span class="c1"># the campaign configuration (including the template).</span>
+<a id="__codelineno-11-50" name="__codelineno-11-50"></a>
+<a id="__codelineno-11-51" name="__codelineno-11-51"></a><span class="nt">campaign</span><span class="p">:</span>
+<a id="__codelineno-11-52" name="__codelineno-11-52"></a><span class="w">  </span><span class="nt">directories</span><span class="p">:</span>
+<a id="__codelineno-11-53" name="__codelineno-11-53"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATM</span>
+<a id="__codelineno-11-54" name="__codelineno-11-54"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BPE</span>
+<a id="__codelineno-11-55" name="__codelineno-11-55"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GEN</span>
+<a id="__codelineno-11-56" name="__codelineno-11-56"></a><span class="w">    </span><span class="nt">files</span><span class="p">:</span>
+<a id="__codelineno-11-57" name="__codelineno-11-57"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*CONFIG</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">OBSERV.SEL</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-11-58" name="__codelineno-11-58"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*PAN</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">SESSIONS.SES</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-11-59" name="__codelineno-11-59"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GRD</span>
+<a id="__codelineno-11-60" name="__codelineno-11-60"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OBS</span>
+<a id="__codelineno-11-61" name="__codelineno-11-61"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ORB</span>
+<a id="__codelineno-11-62" name="__codelineno-11-62"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ORX</span>
+<a id="__codelineno-11-63" name="__codelineno-11-63"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OUT</span>
+<a id="__codelineno-11-64" name="__codelineno-11-64"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RAW</span>
+<a id="__codelineno-11-65" name="__codelineno-11-65"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SOL</span>
+<a id="__codelineno-11-66" name="__codelineno-11-66"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STA</span>
+<a id="__codelineno-11-67" name="__codelineno-11-67"></a>
+<a id="__codelineno-11-68" name="__codelineno-11-68"></a><span class="nt">troposphere</span><span class="p">:</span>
+<a id="__codelineno-11-69" name="__codelineno-11-69"></a>
+<a id="__codelineno-11-70" name="__codelineno-11-70"></a>
+<a id="__codelineno-11-71" name="__codelineno-11-71"></a><span class="c1"># (...)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="highlight"><span class="filename">Command to see the rendered runtime configuration</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ab<span class="w"> </span>config<span class="w"> </span>runtime
+</code></pre></div>
+<div class="highlight"><span class="filename">Rendered configuration</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="s1">'ab'</span><span class="p">:</span> <span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/autobernese'</span><span class="p">),</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="s1">'logging'</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>        <span class="s1">'filename'</span><span class="p">:</span> <span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/autobernese/autobernese.log'</span><span class="p">),</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="s1">'format'</span><span class="p">:</span> <span class="s1">'</span><span class="si">%(asctime)s</span><span class="s1"> | </span><span class="si">{user}</span><span class="s1"> | </span><span class="si">%(levelname)s</span><span class="s1"> | </span><span class="si">%(name)s</span><span class="s1"> | </span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">,</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>        <span class="s1">'datefmt'</span><span class="p">:</span> <span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S'</span><span class="p">,</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>        <span class="s1">'style'</span><span class="p">:</span> <span class="s1">'%'</span><span class="p">,</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="s1">'level'</span><span class="p">:</span> <span class="s1">'DEBUG'</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="p">},</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    <span class="s1">'campaign_templates'</span><span class="p">:</span> <span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/autobernese/templates'</span><span class="p">),</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    <span class="s1">'common_config'</span><span class="p">:</span> <span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/autobernese/autobernese.yaml'</span><span class="p">),</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="s1">'sections_to_override'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'metadata'</span><span class="p">,</span> <span class="s1">'environment'</span><span class="p">,</span> <span class="s1">'sources'</span><span class="p">,</span> <span class="s1">'tasks'</span><span class="p">,</span> <span class="s1">'station'</span><span class="p">,</span> <span class="s1">'clean'</span><span class="p">,</span> <span class="s1">'troposphere'</span><span class="p">,</span> <span class="s1">'campaign'</span><span class="p">]</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="download-sources">Download sources<a class="headerlink" href="#download-sources" title="Permanent link">¶</a></h2>
+<p>Data acquisition from and management of external sources is a large part of the
+work performed, before creating Bernese campaigns.</p>
+<p>AutoBernese lets users download external sources from HTTP anf FTP and store
+them in any available local filepath desired.</p>
+<p>AutoBernese can download sources common to all users as well as
+campaign-specific sources.</p>
+<p>To do either, the sources must be specified in the relevant configuration file:</p>
+<table>
+<thead>
+<tr>
+<th>Download</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common data</td>
+<td><code>$C/../autobernese/autobernese.yaml</code></td>
+</tr>
+<tr>
+<td>Campaign data</td>
+<td><code>$P/&lt;campaign-name&gt;/campaign.yaml</code></td>
+</tr>
+</tbody>
+</table>
+<p><a href="../download-sources/">A separate document</a> describes in detail how to set up
+sources in the configuration files.</p>
+<h3 id="ab-download"><code>ab download</code><a class="headerlink" href="#ab-download" title="Permanent link">¶</a></h3>
+<p>This downloads data from the sources specified in the rendered AutoBernese
+configuration. Below is the command for downloading sources for a given
+campaign.</p>
+<p>The built-in configuration contains no sources, so running the command without a
+user-supplied configuration file in the AutoBernese runtime directory, one will
+see the following.</p>
+<p><strong>Example</strong></p>
+<p>This example illustrates the case, where a manually adding the AutoBernese
+configuration file <code>autobernese.yaml</code> with some entries in the <code>source</code> section
+is added to the <a href="../configuration-files/#runtime-settings">AutoBernese runtime directory</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Configuration file segment</label><label for="__tabbed_2_2">Rendered configuration</label><label for="__tabbed_2_3">Command output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nt">sources</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EUREF_STA</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EUREF STA file</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ftp://epncb.oma.be/pub/station/general/EUREF.STA</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">  </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*D</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">station</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BSW_MODEL</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BSW Model data</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ftp://ftp.aiub.unibe.ch/BSWUSER54/MODEL/</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">  </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="nv">*MODEL</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">  </span><span class="nt">filenames</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'*'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">  </span><span class="nt">max_age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BSW_CONFIG</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BSW Configuration data</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ftp://ftp.aiub.unibe.ch/BSWUSER54/CONFIG/</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">  </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="nv">*CONFIG</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">  </span><span class="nt">filenames</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'*'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="w">  </span><span class="nt">max_age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ab<span class="w"> </span>config<span class="w"> </span>sources
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">[</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">Source</span><span class="p">(</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        <span class="n">identifier</span><span class="o">=</span><span class="s1">'EUREF_STA'</span><span class="p">,</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>        <span class="n">description</span><span class="o">=</span><span class="s1">'EUREF STA file'</span><span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>        <span class="n">url</span><span class="o">=</span><span class="s1">'ftp://epncb.oma.be/pub/station/general/EUREF.STA'</span><span class="p">,</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>        <span class="n">destination</span><span class="o">=</span><span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/data/DATAPOOL/station'</span><span class="p">),</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="n">filenames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>        <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>        <span class="n">max_age</span><span class="o">=</span><span class="n">inf</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="p">),</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">Source</span><span class="p">(</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="n">identifier</span><span class="o">=</span><span class="s1">'BSW_MODEL'</span><span class="p">,</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>        <span class="n">description</span><span class="o">=</span><span class="s1">'BSW Model data'</span><span class="p">,</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        <span class="n">url</span><span class="o">=</span><span class="s1">'ftp://ftp.aiub.unibe.ch/BSWUSER54/MODEL/'</span><span class="p">,</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="n">destination</span><span class="o">=</span><span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/BERN54/GLOBAL/MODEL'</span><span class="p">),</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>        <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="s1">'*'</span><span class="p">],</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>        <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>        <span class="n">max_age</span><span class="o">=</span><span class="mi">1</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>    <span class="p">),</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>    <span class="n">Source</span><span class="p">(</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>        <span class="n">identifier</span><span class="o">=</span><span class="s1">'BSW_CONFIG'</span><span class="p">,</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>        <span class="n">description</span><span class="o">=</span><span class="s1">'BSW Configuration data'</span><span class="p">,</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>        <span class="n">url</span><span class="o">=</span><span class="s1">'ftp://ftp.aiub.unibe.ch/BSWUSER54/CONFIG/'</span><span class="p">,</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>        <span class="n">destination</span><span class="o">=</span><span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/BERN54/GLOBAL/CONFIG'</span><span class="p">),</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>        <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="s1">'*'</span><span class="p">],</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>        <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>        <span class="n">max_age</span><span class="o">=</span><span class="mi">1</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>    <span class="p">)</span>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ab<span class="w"> </span>download
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Source: EUREF STA file
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a> Downloaded: 1
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a> Existing: 0
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>Source: BSW Model data
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a> Downloaded: 7
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a> Existing: 0
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>Source: BSW Configuration data
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a> Downloaded: 43
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a> Existing: 0
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>Finished downloading sources ...
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>Overall status:
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a> Downloaded: 51
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a> Existing: 0
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="ab-download-c-campaign-name"><code>ab download -c &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-download-c-campaign-name" title="Permanent link">¶</a></h3>
+<p>This downloads data from the sources specified in the campaign-specific
+configuration file <code>campaign.yaml</code> in the root of the campaign directory of
+campaign <code>&lt;campaign-name&gt;</code>.</p>
+<p>The download procedure is exactly the same as for the common sources above. Each
+source in the section <code>sources</code> has its remote paths resolved and downloaded to
+the specified download dirctory.</p>
+<p>The difference between specifying the sources in the common configuration file
+and a campaign-specific is that the sources in the campaign-configuration file
+has access to campaign metadata. such as beginning and end dates for the Bernese
+campaign. This is explained in more detail in the section <a href="../download-sources/">Download sources</a>.</p>
+<p><strong>Example</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Configuration file segment</label><label for="__tabbed_3_2">Rendered configuration</label><label for="__tabbed_3_3">Command output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-28">28</a></span>
+<span class="normal"><a href="#__codelineno-19-29">29</a></span>
+<span class="normal"><a href="#__codelineno-19-30">30</a></span>
+<span class="normal"><a href="#__codelineno-19-31">31</a></span>
+<span class="normal"><a href="#__codelineno-19-32">32</a></span>
+<span class="normal"><a href="#__codelineno-19-33">33</a></span>
+<span class="normal"><a href="#__codelineno-19-34">34</a></span>
+<span class="normal"><a href="#__codelineno-19-35">35</a></span>
+<span class="normal"><a href="#__codelineno-19-36">36</a></span>
+<span class="normal"><a href="#__codelineno-19-37">37</a></span>
+<span class="normal"><a href="#__codelineno-19-38">38</a></span>
+<span class="normal"><a href="#__codelineno-19-39">39</a></span>
+<span class="normal"><a href="#__codelineno-19-40">40</a></span>
+<span class="normal"><a href="#__codelineno-19-41">41</a></span>
+<span class="normal"><a href="#__codelineno-19-42">42</a></span>
+<span class="normal"><a href="#__codelineno-19-43">43</a></span>
+<span class="normal"><a href="#__codelineno-19-44">44</a></span>
+<span class="normal"><a href="#__codelineno-19-45">45</a></span>
+<span class="normal"><a href="#__codelineno-19-46">46</a></span>
+<span class="normal"><a href="#__codelineno-19-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-28" name="__codelineno-19-28"></a><span class="c1"># (...)</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29"></a><span class="nt">sources</span><span class="p">:</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30"></a>
+<a id="__codelineno-19-31" name="__codelineno-19-31"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RINEX_EPN</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32"></a><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RINEX data</span>
+<a id="__codelineno-19-33" name="__codelineno-19-33"></a><span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ftp://ftp.epncb.oma.be/pub/obs/{date.year}/{date.doy:03d}</span>
+<a id="__codelineno-19-34" name="__codelineno-19-34"></a><span class="w">  </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*D</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">RINEX</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'{date.gps_week}'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-19-35" name="__codelineno-19-35"></a><span class="w">  </span><span class="nt">filenames</span><span class="p">:</span>
+<a id="__codelineno-19-36" name="__codelineno-19-36"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'{station}_{date.year}{date.doy:03d}0000_01D_30S_MO.crx.gz'</span>
+<a id="__codelineno-19-37" name="__codelineno-19-37"></a><span class="nt">parameters</span><span class="p">:</span>
+<a id="__codelineno-19-38" name="__codelineno-19-38"></a><span class="w">    </span><span class="nt">station</span><span class="p">:</span>
+<a id="__codelineno-19-39" name="__codelineno-19-39"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BUDP00DNK_R</span>
+<a id="__codelineno-19-40" name="__codelineno-19-40"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ONSA00SWE_R</span>
+<a id="__codelineno-19-41" name="__codelineno-19-41"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OSLS00NOR_S</span>
+<a id="__codelineno-19-42" name="__codelineno-19-42"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POTS00DEU_R</span>
+<a id="__codelineno-19-43" name="__codelineno-19-43"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WSRT00NLD_R</span>
+<a id="__codelineno-19-44" name="__codelineno-19-44"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WTZR00DEU_R</span>
+<a id="__codelineno-19-45" name="__codelineno-19-45"></a><span class="w">    </span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="kt">!DateRange</span>
+<a id="__codelineno-19-46" name="__codelineno-19-46"></a><span class="w">      </span><span class="nt">beg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023-01-01</span>
+<a id="__codelineno-19-47" name="__codelineno-19-47"></a><span class="w">      </span><span class="nt">end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023-01-02</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition note">
+<p class="admonition-title">Python format strings</p>
+<p>The strings using the Python format-string syntax are explicitly written
+as strings with quotes, since they contain Python syntax for template
+strings that clash with YAML syntx for dictionaries.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ab<span class="w"> </span>config<span class="w"> </span>-c<span class="w"> </span>&lt;campaign-name&gt;<span class="w"> </span>sources
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">[</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">Source</span><span class="p">(</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        <span class="n">identifier</span><span class="o">=</span><span class="s1">'RINEX_EPN'</span><span class="p">,</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>        <span class="n">description</span><span class="o">=</span><span class="s1">'RINEX data'</span><span class="p">,</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>        <span class="n">url</span><span class="o">=</span><span class="s1">'ftp://ftp.epncb.oma.be/pub/obs/</span><span class="si">{date.year}</span><span class="s1">/</span><span class="si">{date.doy:03d}</span><span class="s1">'</span><span class="p">,</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>        <span class="n">destination</span><span class="o">=</span><span class="n">PosixPath</span><span class="p">(</span><span class="s1">'/home/bsw/prod/data/DATAPOOL/RINEX/</span><span class="si">{date.gps_week}</span><span class="s1">'</span><span class="p">),</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>        <span class="n">filenames</span><span class="o">=</span><span class="p">[</span><span class="s1">'</span><span class="si">{station}</span><span class="s1">_</span><span class="si">{date.year}{date.doy:03d}</span><span class="s1">0000_01D_30S_MO.crx.gz'</span><span class="p">],</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>        <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>            <span class="s1">'station'</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>                <span class="s1">'BUDP00DNK_R'</span><span class="p">,</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>                <span class="s1">'ONSA00SWE_R'</span><span class="p">,</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>                <span class="s1">'OSLS00NOR_S'</span><span class="p">,</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>                <span class="s1">'POTS00DEU_R'</span><span class="p">,</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>                <span class="s1">'RIGA00LVA_R'</span><span class="p">,</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>                <span class="s1">'WSRT00NLD_R'</span><span class="p">,</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>                <span class="s1">'WTZR00DEU_R'</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>            <span class="p">],</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>            <span class="s1">'date'</span><span class="p">:</span> <span class="p">[</span><span class="n">GPSDate</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">GPSDate</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>        <span class="p">},</span>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>        <span class="n">max_age</span><span class="o">=</span><span class="n">inf</span>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>    <span class="p">)</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ab<span class="w"> </span>download<span class="w"> </span>-c<span class="w"> </span>&lt;campaign-name&gt;
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>Source: RINEX data
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>  Downloaded: 12
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>  Existing: 0
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>Finished downloading sources ...
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>Overall status:
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>  Downloaded: 12
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>  Existing: 0
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="campaign-management">Campaign management<a class="headerlink" href="#campaign-management" title="Permanent link">¶</a></h2>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>ab<span class="w"> </span>campaign
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Usage: ab campaign [OPTIONS] COMMAND [ARGS]...
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    Create, run and manage Bernese campaigns.
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>Options:
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>  --help  Show this message and exit.
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>Commands:
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>  clean       Delete content in specified campaign directories.
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>  create      Create a Bernese campaign with directory content based on...
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>  info        Show campaign metadata and date range
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>  ls          List existing campaigns
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>  register    Register existing campaign directory in Bernese-campaign menu.
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>  renew       Renew campaign configuration file.
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>  run         Resolve and run all or specified campaign tasks.
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>  sources     Print the campaign-specific sources.
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>  tasks       Show tasks for a campaign.
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>  templates   List available campaign templates or show content of given...
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>  unregister  Unregister campaign in Bernese-campaign menu.
+</code></pre></div>
+<h3 id="ab-campaign-ls"><code>ab campaign ls</code><a class="headerlink" href="#ab-campaign-ls" title="Permanent link">¶</a></h3>
+<p>List existing Bernese campaigns:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>ls
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Existing campaigns registered in the BSW campaign list:
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>/home/bsw/prod/data/CAMPAIGN54/EXAMPLE
+</code></pre></div>
+<h3 id="ab-campaign-ls-v"><code>ab campaign ls -v</code><a class="headerlink" href="#ab-campaign-ls-v" title="Permanent link">¶</a></h3>
+<p>List AutoBernese details of each Bernese campaign:</p>
+<p>List campaign templates and template content.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>ls<span class="w"> </span>-v
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Existing campaigns registered in the BSW campaign list:
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>/home/bsw/prod/data/CAMPAIGN54/EXAMPLE example 0.1.0 USERNAME 2023-06-08
+</code></pre></div>
+<h3 id="ab-campaign-templates"><code>ab campaign templates</code><a class="headerlink" href="#ab-campaign-templates" title="Permanent link">¶</a></h3>
+<p>List available campaign-configuration templates:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>templates
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>default
+</code></pre></div>
+<h3 id="ab-campaign-templates-template-name"><code>ab campaign templates &lt;template-name&gt;</code><a class="headerlink" href="#ab-campaign-templates-template-name" title="Permanent link">¶</a></h3>
+<p>Show content of the campaign-configuration template:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>templates<span class="w"> </span>default
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nt">tasks</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="nt">sources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<h3 id="ab-campaign-create"><code>ab campaign create</code><a class="headerlink" href="#ab-campaign-create" title="Permanent link">¶</a></h3>
+<p>Create a campaign:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>create<span class="w"> </span>WK2222<span class="w"> </span>-b<span class="w"> </span><span class="m">2022</span>-08-07<span class="w"> </span>-e<span class="w"> </span><span class="m">2022</span>-08-13
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>ab<span class="w"> </span>campaign<span class="w"> </span>create<span class="w"> </span>WK2222<span class="w"> </span>-t<span class="w"> </span>&lt;template-name&gt;<span class="w"> </span>-b<span class="w"> </span><span class="m">2022</span>-08-07<span class="w"> </span>-e<span class="w"> </span><span class="m">2022</span>-08-13
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>ab<span class="w"> </span>campaign<span class="w"> </span>create<span class="w"> </span>WK2222<span class="w"> </span>-g<span class="w"> </span><span class="m">2222</span>
+</code></pre></div>
+<p>The following figure illustrates how the campaign metadata is added above the
+content of the campaign template file content to create the campaign
+configuration file for the new campaign.</p>
+<div class="result">
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/create-campaign-configuration.png" data-desc-position="bottom"><img alt="Creating a campaign-configuration file" src="../assets/create-campaign-configuration.png"></a></p>
+</div>
+<h3 id="ab-campaign-sources-campaign-name"><code>ab campaign sources &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-campaign-sources-campaign-name" title="Permanent link">¶</a></h3>
+<p>Show the sources specified for a given campaign:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>sources<span class="w"> </span>&lt;campaign-name&gt;
+</code></pre></div>
+<h3 id="ab-campaign-tasks-campaign-name"><code>ab campaign tasks &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-campaign-tasks-campaign-name" title="Permanent link">¶</a></h3>
+<p>Show task definitions for a given campaign:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>tasks<span class="w"> </span>&lt;campaign-name&gt;
+</code></pre></div>
+<h3 id="ab-campaign-run-campaign-name"><code>ab campaign run &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-campaign-run-campaign-name" title="Permanent link">¶</a></h3>
+<p>Run tasks for a given campaign:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>run<span class="w"> </span>&lt;campaign-name&gt;
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>ab<span class="w"> </span>campaign<span class="w"> </span>run<span class="w"> </span>&lt;campaign-name&gt;<span class="w"> </span>-i<span class="w"> </span>&lt;identifier-1&gt;<span class="w"> </span>-i<span class="w"> </span>&lt;identifier-2&gt;
+</code></pre></div>
+<h3 id="ab-campaign-clean-campaign-name"><code>ab campaign clean &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-campaign-clean-campaign-name" title="Permanent link">¶</a></h3>
+<p>Delete sub directory content in given campaign:</p>
+<p>Adding <a href="../configuration-files/#the-clean-section">a <code>clean</code> section</a> to the campaign configuration allows for easy
+cleaning of entire subdirectories in the campaign directory.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>clean<span class="w"> </span>EXAMPLE
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>/home/bsw/prod/data/CAMPAIGN54/EXAMPLE/OUT
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>/home/bsw/prod/data/CAMPAIGN54/EXAMPLE/SOL
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>Proceed<span class="w"> </span><span class="o">(</span>y/<span class="o">[</span>n<span class="o">])</span>:<span class="w"> </span>y
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="c1"># List of deleted files</span>
+</code></pre></div>
+<h3 id="ab-campaign-register-campaign-name"><code>ab campaign register &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-campaign-register-campaign-name" title="Permanent link">¶</a></h3>
+<p>Register <em>existing</em> campaign in CAMPAIGN54 directory in Bernese-campaign menu:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>register<span class="w"> </span>&lt;campaign-name&gt;
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>ab<span class="w"> </span>campaign<span class="w"> </span>register<span class="w"> </span>&lt;campaign-name-1&gt;<span class="w"> </span>&lt;campaign-name-2&gt;<span class="w"> </span>&lt;campaign-name-...&gt;
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>Adding<span class="w"> </span>/home/bsw/prod/data/CAMPAIGN54/&lt;campaign-name-1&gt;
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>Adding<span class="w"> </span>/home/bsw/prod/data/CAMPAIGN54/&lt;campaign-name-2&gt;
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="c1"># ...</span>
+</code></pre></div>
+<h3 id="ab-campaign-unregister-campaign-name"><code>ab campaign unregister &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-campaign-unregister-campaign-name" title="Permanent link">¶</a></h3>
+<p>Unregister, existing or not, campaign names from Bernese-campaign menu:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>ab<span class="w"> </span>campaign<span class="w"> </span>unregister<span class="w"> </span>&lt;campaign-name&gt;
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>ab<span class="w"> </span>campaign<span class="w"> </span>unregister<span class="w"> </span>&lt;campaign-name-1&gt;<span class="w"> </span>&lt;campaign-name-2&gt;<span class="w"> </span>&lt;campaign-name-...&gt;
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>Removing<span class="w"> </span>/home/bsw/prod/data/CAMPAIGN54/&lt;campaign-name-1&gt;
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>Removing<span class="w"> </span>/home/bsw/prod/data/CAMPAIGN54/&lt;campaign-name-2&gt;
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="c1"># ...</span>
+</code></pre></div>
+<h2 id="station-related-utilities">Station-related utilities<a class="headerlink" href="#station-related-utilities" title="Permanent link">¶</a></h2>
+<p>The station namespace has the following commands:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>ab<span class="w"> </span>station
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>Usage: ab station [OPTIONS] COMMAND [ARGS]...
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>  Stand-alone tools for station data.
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>Options:
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a>  --help  Show this message and exit.
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a>
+<a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a>Commands:
+<a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a>  sitelogs2sta   Create a STA file from sitelogs and other station info.
+</code></pre></div>
+<h3 id="create-sta-file-from-sitelogs">Create STA file from sitelogs<a class="headerlink" href="#create-sta-file-from-sitelogs" title="Permanent link">¶</a></h3>
+<p>AutoBernese can create a single STA-file from a list of site-log files.</p>
+<p>This can be done in four different ways depending on the command-line input.</p>
+<h4 id="ab-station-sitelogs2sta"><code>ab station sitelogs2sta</code><a class="headerlink" href="#ab-station-sitelogs2sta" title="Permanent link">¶</a></h4>
+<p>Running the command with no arguments:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>ab<span class="w"> </span>station<span class="w"> </span>sitelogs2sta
+</code></pre></div>
+<p>creates a STA file with the settings obtained from the <code>station</code> section of the
+rendered AutoBernese configuration file.</p>
+<p>See <a href="../configuration-files/#station-site-log-files-to-use-for-sta-file-creation">station configuration documentation</a> for further details.</p>
+<h4 id="ab-station-sitelogs2sta-c-campaign-name"><code>ab station sitelogs2sta -c &lt;campaign-name&gt;</code><a class="headerlink" href="#ab-station-sitelogs2sta-c-campaign-name" title="Permanent link">¶</a></h4>
+<p>Using campaign-specific settings.</p>
+<p>You may add the same section in your campaign-specific configuration file and
+provide the name of the campaign to the command in order to use this as your
+input.</p>
+<div class="highlight"><span class="filename">`campaign.yaml`</span><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="nt">station</span><span class="p">:</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="w">  </span><span class="nt">sitelogs</span><span class="p">:</span>
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*D</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">sitelogs</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'sta1*.log'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*D</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">sitelogs</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'sta2*.log'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*D</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">sitelogs</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'sta3*.log'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="w">  </span><span class="nt">individually_calibrated</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">sta1</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="w">  </span><span class="nt">output_sta_file</span><span class="p">:</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*P</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">*campaign</span><span class="err">*</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">STA</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">campaign.STA</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a><span class="w">  </span><span class="nt">preferred_station_id_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">four</span>
+</code></pre></div>
+<p>This has the implications that one may use the YAML aliases available in the
+campaign configuration as well as thos in the common configuration.</p>
+<p>As seen in the example configuration above, one may then create the STA file
+directly inside your campaign's STA directory. If your campaign has the name
+<code>CAMPAIGN</code>, the command one type will then be:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>ab<span class="w"> </span>station<span class="w"> </span>sitelogs2sta<span class="w"> </span>-c<span class="w"> </span>CAMPAIGN
+</code></pre></div>
+<p>If a campaign-specific YAML configuration is used in combination with
+command-line arguments, the latter take precedence. This way, it is possible
+to use the same list of sitelog-files from a campaign, but generate STA files
+with different parameters for <code>individually_calibrated</code>, <code>output_sta_file</code>,
+<code>preferred_station_id_length</code>, and <code>skip_period</code>. For example:</p>
+<div class="highlight"><span class="filename">Command with command-line arguments</span><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>ab<span class="w"> </span>station<span class="w"> </span>sitelogs2sta<span class="w"> </span>-c<span class="w"> </span>CAMPAIGN<span class="w"> </span>-s<span class="w"> </span>week<span class="w"> </span>-o<span class="w"> </span>CAMPAIGN_skip_week.STA
+</code></pre></div>
+<p>The above command uses the settings in the YAML-file of the CAMPAIGN,
+but overrides its settings for <code>skip_period</code> and <code>output_sta_file</code>.</p>
+<h4 id="ab-station-sitelogs2sta-f-custom-configuration-file"><code>ab station sitelogs2sta -f &lt;custom-configuration-file&gt;</code><a class="headerlink" href="#ab-station-sitelogs2sta-f-custom-configuration-file" title="Permanent link">¶</a></h4>
+<p>Thirdly, one can build a <code>.STA</code> file with a custom input YAML file located
+anywhere available on the filesystem. The following example also shows that the
+output file can be saved to your current working directory if not specific path
+is specified:</p>
+<div class="highlight"><span class="filename">station.yaml</span><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nt">station</span><span class="p">:</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="w">  </span><span class="nt">sitelogs</span><span class="p">:</span>
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BLAH00DNK_20230101.log</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BLUH00DNK_20220101.log</span>
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="w">  </span><span class="nt">individually_calibrated</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">BLUH</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="w">  </span><span class="nt">output_sta_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sitelogs.STA</span>
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="w">  </span><span class="nt">preferred_station_id_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">four</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>ab<span class="w"> </span>station<span class="w"> </span>sitelogs2sta<span class="w"> </span>-f<span class="w"> </span>station.yaml
+</code></pre></div>
+<h4 id="ab-station-sitelogs2sta-i-sitelog-k-station-id-o-sta-file-l-station_id_length"><code>ab station sitelogs2sta -i &lt;sitelog&gt; -k &lt;station-id&gt; -o &lt;STA-file&gt; -l &lt;station_id_length&gt;</code><a class="headerlink" href="#ab-station-sitelogs2sta-i-sitelog-k-station-id-o-sta-file-l-station_id_length" title="Permanent link">¶</a></h4>
+<p>Finally, it is also possible to give all settings as
+command-line arguments:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>ab<span class="w"> </span>station<span class="w"> </span>sitelogs2sta<span class="w"> </span>-i<span class="w"> </span>BLAH00DNK_20230101.log<span class="w"> </span>-i<span class="w"> </span>BLUH00DNK_20220101.log<span class="w"> </span>-k<span class="w"> </span>BLUH<span class="w"> </span>-o<span class="w"> </span>sitelogs.STA<span class="w"> </span>-l<span class="w"> </span>four
+</code></pre></div>
+<p>The above, gives the same result as with the arguments given in the special
+<code>station.yaml</code> file.</p>
+<p>Importantly, when combining configuration files and command-line arguments,
+the latter take precedence.</p>
+<h2 id="combine-troposphere-hour-files-to-day-files">Combine troposphere hour files to day files<a class="headerlink" href="#combine-troposphere-hour-files-to-day-files" title="Permanent link">¶</a></h2>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>ab<span class="w"> </span>troposphere
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>Usage: ab troposphere [OPTIONS] COMMAND [ARGS]...
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>  Stand-alone tools for troposphere-delay model data (VMF3).
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a>Options:
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>  --help  Show this message and exit.
+<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a>
+<a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a>Commands:
+<a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a>  build   Concatenate hour files into dayfiles.
+<a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a>  check   Test that input hour files went into built dayfiles.
+<a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a>  status  Print availability of hour and day files in selected interval.
+</code></pre></div>
+<p>The sub command <code>status</code> checks whether input files (six-hour interval model
+data) and the output file (concatenated content from the input files) exist.</p>
+<p>The sub command <code>build</code> concatenates the <em>hour files</em> and saves the result in
+the output <em>day file</em>. It follows the requirement for Bernese that the day file
+contains hour file content from the given date as well as the content of the
+first hour file generated at midnight the following date.</p>
+<p>The <code>check</code> sub command is for controlling the quality of existing day files by
+checking that a given unique line in each day file exists and at the right line
+number. Thus, this also requires that the input files exist.</p>
+<p>The tool needs locations for the downloaded data and the output files as well as
+the interval dates so it can examine (<code>status</code>) the input and output or produce
+(<code>build</code>) the output files.</p>
+<p>The three sub commands have the same call signature with the following logic:</p>
+<ul>
+<li>
+<p>Specify input path, output path, start and end dates, as well as hour-file
+    name format and day-file name format.</p>
+</li>
+<li>
+<p>The input path <code>ipath</code>, output path <code>opath</code>, hour-file format <code>ifname</code> and
+    day-file format <code>ofname</code> can be left out to be read from the configuration
+    file in use. The core configuration has our own defaults. If other paths or
+    filrname formats are needed, they can be defined in the common configuration
+    (<code>autobernese.yaml</code>), where they should be defined in the following way:</p>
+<div class="highlight"><span class="filename">`autobernese.yaml`</span><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="c1"># (...)</span>
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="nt">troposphere</span><span class="p">:</span>
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a><span class="w">  </span><span class="nt">ipath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/your/DATAPOOL/VMF3/1x1_OP_H/{date.year}</span>
+<a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a><span class="w">  </span><span class="nt">opath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/your/DATAPOOL/VMF3/1x1_OP_GRD/{date.year}</span>
+<a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a><span class="w">  </span><span class="nt">ifname</span><span class="p">:</span><span class="w"> </span><span class="s">'VMF3_{date.year}{date.month:02d}{date.day:02d}.H{hour}'</span>
+<a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a><span class="w">  </span><span class="nt">ofname</span><span class="p">:</span><span class="w"> </span><span class="s">'VMF3_{date.year}{date.doy:03d}0.GRD'</span>
+<a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a><span class="c1"># (...)</span>
+</code></pre></div>
+<p>Or even so, using the AutoBernese YAML aliases, in this example using <code>*D</code> to
+reference the path to DATAPOOL area:</p>
+<div class="highlight"><span class="filename">`autobernese.yaml`</span><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="c1"># (...)</span>
+<a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="nt">troposphere</span><span class="p">:</span>
+<a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="w">  </span><span class="nt">ipath</span><span class="p">:</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*D</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">VMF3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'1x1_OP_H'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'{date.year}'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="w">  </span><span class="nt">opath</span><span class="p">:</span><span class="w"> </span><span class="kt">!Path</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">*D</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">VMF3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'1x1_OP_GRD'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'{date.year}'</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="w">  </span><span class="nt">ifname</span><span class="p">:</span><span class="w"> </span><span class="s">'VMF3_{date.year}{date.month:02d}{date.day:02d}.H{hour}'</span>
+<a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a><span class="w">  </span><span class="nt">ofname</span><span class="p">:</span><span class="w"> </span><span class="s">'VMF3_{date.year}{date.doy:03d}0.GRD'</span>
+<a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="c1"># (...)</span>
+</code></pre></div>
+</li>
+</ul>
+<p>Below are given examples of how to use the commands, where the filename formats
+are left out, and thus being set to those set in the core or common
+configuration.</p>
+<h3 id="ab-troposphere-build-i-ipath-o-opath-b-beg-e-end-h-iformat-d-oformat"><code>ab troposphere build -i &lt;ipath&gt; -o &lt;opath&gt; -b &lt;beg&gt; -e &lt;end&gt; -h &lt;iformat&gt; -d &lt;oformat&gt;</code><a class="headerlink" href="#ab-troposphere-build-i-ipath-o-opath-b-beg-e-end-h-iformat-d-oformat" title="Permanent link">¶</a></h3>
+<p>Build day files from previously-downloaded hour files for the given interval.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>ab<span class="w"> </span>troposphere<span class="w"> </span>build<span class="w"> </span>-i<span class="w"> </span><span class="nv">$D</span>/VMF3/1x1_OP_H/2022<span class="w"> </span>-o<span class="w"> </span><span class="nv">$D</span>/VMF3/1x1_OP_GRD/2022<span class="w"> </span>-b<span class="w"> </span><span class="m">2023</span>-01-01<span class="w"> </span>-e<span class="w"> </span><span class="m">2023</span>-01-02
+<a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>ab<span class="w"> </span>troposphere<span class="w"> </span>build<span class="w"> </span>-i<span class="w"> </span><span class="nv">$D</span>/VMF3/1x1_OP_H/2022<span class="w"> </span>-o<span class="w"> </span><span class="nv">$D</span>/VMF3/1x1_OP_GRD/2022<span class="w"> </span>-b<span class="w"> </span><span class="m">2023</span>-01-01<span class="w"> </span>-e<span class="w"> </span><span class="m">2023</span>-01-02<span class="w"> </span>-h<span class="w"> </span><span class="s1">'VMF3_{date.year}{date.month:02d}{date.day:02d}.H{hour}'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'VMF3_{date.year}{date.doy:03d}0.GRD'</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>Build VMF3 files for chosen interval 2023-01-01 to 2023-01-02 ...
+<a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>Building /home/bsw/prod/data/DATAPOOL/VMF3/1x1_OP_GRD/2023/VMFG_20230010.GRD ... SUCCESS
+<a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a>Building /home/bsw/prod/data/DATAPOOL/VMF3/1x1_OP_GRD/2023/VMFG_20230020.GRD ... FAILED
+<a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a>  Error: Missing input files for VMF3DayFile(date=GPSDate(2023, 1, 2), ...) ...
+</code></pre></div>
+<p>Under the hood, the actual full file paths to the input and output files are
+created in the same way as one would define them in a AutoBernese <code>Source</code>
+configuration in your common or campaign-specific configuration file. The
+filepaths are thus created from a template path, where each filename is
+generated from an input date. Now, the name of the date instances is <code>date</code>.</p>
+<p>With this information, a user is able to use this in the input path given as the
+command-line input in the following way:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>ab<span class="w"> </span>troposphere<span class="w"> </span>build<span class="w"> </span>-i<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">D</span><span class="si">}</span><span class="s2">/VMF3/1x1_OP_H/{date.year}"</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">D</span><span class="si">}</span><span class="s2">/VMF3/1x1_OP_GRD/{date.year}"</span><span class="w"> </span>-b<span class="w"> </span><span class="m">2023</span>-01-01<span class="w"> </span>-e<span class="w"> </span><span class="m">2023</span>-01-02
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>Build VMF3 files for chosen interval 2023-01-01 to 2023-01-02 ...
+<a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a>Building /home/bsw/prod/data/DATAPOOL/VMF3/1x1_OP_GRD/2023/VMFG_20230010.GRD ... SUCCESS
+<a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a>Building /home/bsw/prod/data/DATAPOOL/VMF3/1x1_OP_GRD/2023/VMFG_20230020.GRD ... FAILED
+<a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a>  Error: Missing input files for VMF3DayFile(date=GPSDate(2023, 1, 2), ...) ...
+</code></pre></div>
+<p>Typing in the paths in this command is cumbersome, so it is more efficient to
+encode your path convention into the common user configuration file under its
+own section <code>troposphere</code>, like shown above.</p>
+<p>The same command would then look like this:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>ab<span class="w"> </span>troposphere<span class="w"> </span>build<span class="w"> </span>-b<span class="w"> </span><span class="m">2023</span>-01-01<span class="w"> </span>-e<span class="w"> </span><span class="m">2023</span>-01-02
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>Build VMF3 files for chosen interval 2023-01-01 to 2023-01-02 ...
+<a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>Building /home/bsw/prod/data/DATAPOOL/VMF3/1x1_OP_GRD/2023/VMFG_20230010.GRD ... SUCCESS
+<a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a>Building /home/bsw/prod/data/DATAPOOL/VMF3/1x1_OP_GRD/2023/VMFG_20230020.GRD ... FAILED
+<a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a>  Error: Missing input files for VMF3DayFile(date=GPSDate(2023, 1, 2), ...) ...
+</code></pre></div>
+<h3 id="ab-troposphere-status-b-beg-e-end"><code>ab troposphere status -b &lt;beg&gt; -e &lt;end&gt;</code><a class="headerlink" href="#ab-troposphere-status-b-beg-e-end" title="Permanent link">¶</a></h3>
+<p>Show the status of day files and input they are based on for the given interval.</p>
+<p>See also the description under <strong>Build day files</strong> for possible ways to run the
+command with or without configuration setup.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>ab<span class="w"> </span>troposphere<span class="w"> </span>status<span class="w"> </span>-b<span class="w"> </span><span class="m">2023</span>-01-01<span class="w"> </span>-e<span class="w"> </span><span class="m">2023</span>-01-02
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="p">[</span>
+<a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-64-3" name="__codelineno-64-3" href="#__codelineno-64-3"></a><span class="w">    </span><span class="err">'da</span><span class="kc">te</span><span class="err">'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2023-01-01</span><span class="err">'</span><span class="p">,</span>
+<a id="__codelineno-64-4" name="__codelineno-64-4" href="#__codelineno-64-4"></a><span class="w">    </span><span class="err">'i</span><span class="kc">n</span><span class="err">pu</span><span class="kc">t</span><span class="err">_available'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span>
+<a id="__codelineno-64-5" name="__codelineno-64-5" href="#__codelineno-64-5"></a><span class="w">    </span><span class="err">'ou</span><span class="kc">t</span><span class="err">pu</span><span class="kc">t</span><span class="err">_</span><span class="kc">f</span><span class="err">ile_exis</span><span class="kc">ts</span><span class="err">'</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span>
+<a id="__codelineno-64-6" name="__codelineno-64-6" href="#__codelineno-64-6"></a><span class="w">    </span><span class="err">'ou</span><span class="kc">t</span><span class="err">pu</span><span class="kc">t</span><span class="err">_</span><span class="kc">f</span><span class="err">ile'</span><span class="p">:</span><span class="w"> </span><span class="err">'/home/bsw/prod/da</span><span class="kc">ta</span><span class="err">/DATAPOOL/VMF</span><span class="mi">3</span><span class="err">/</span><span class="mi">1</span><span class="err">x</span><span class="mi">1</span><span class="err">_OP_GRD/</span><span class="mi">2023</span><span class="err">/VMFG_</span><span class="mf">20230010.</span><span class="err">GRD'</span>
+<a id="__codelineno-64-7" name="__codelineno-64-7" href="#__codelineno-64-7"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-64-8" name="__codelineno-64-8" href="#__codelineno-64-8"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-64-9" name="__codelineno-64-9" href="#__codelineno-64-9"></a><span class="w">    </span><span class="err">'da</span><span class="kc">te</span><span class="err">'</span><span class="p">:</span><span class="w"> </span><span class="err">'</span><span class="mi">2023-01-02</span><span class="err">'</span><span class="p">,</span>
+<a id="__codelineno-64-10" name="__codelineno-64-10" href="#__codelineno-64-10"></a><span class="w">    </span><span class="err">'i</span><span class="kc">n</span><span class="err">pu</span><span class="kc">t</span><span class="err">_available'</span><span class="p">:</span><span class="w"> </span><span class="err">False</span><span class="p">,</span>
+<a id="__codelineno-64-11" name="__codelineno-64-11" href="#__codelineno-64-11"></a><span class="w">    </span><span class="err">'ou</span><span class="kc">t</span><span class="err">pu</span><span class="kc">t</span><span class="err">_</span><span class="kc">f</span><span class="err">ile_exis</span><span class="kc">ts</span><span class="err">'</span><span class="p">:</span><span class="w"> </span><span class="err">False</span><span class="p">,</span>
+<a id="__codelineno-64-12" name="__codelineno-64-12" href="#__codelineno-64-12"></a><span class="w">    </span><span class="err">'ou</span><span class="kc">t</span><span class="err">pu</span><span class="kc">t</span><span class="err">_</span><span class="kc">f</span><span class="err">ile'</span><span class="p">:</span><span class="w"> </span><span class="err">'/home/bsw/prod/da</span><span class="kc">ta</span><span class="err">/DATAPOOL/VMF</span><span class="mi">3</span><span class="err">/</span><span class="mi">1</span><span class="err">x</span><span class="mi">1</span><span class="err">_OP_GRD/</span><span class="mi">2023</span><span class="err">/VMFG_</span><span class="mf">20230020.</span><span class="err">GRD'</span>
+<a id="__codelineno-64-13" name="__codelineno-64-13" href="#__codelineno-64-13"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-64-14" name="__codelineno-64-14" href="#__codelineno-64-14"></a><span class="p">]</span>
+</code></pre></div>
+<h2 id="show-date-information-for-a-specific-date-or-gps-week">Show date information for a specific date or GPS week<a class="headerlink" href="#show-date-information-for-a-specific-date-or-gps-week" title="Permanent link">¶</a></h2>
+<p>Get general date information based on input date as GPS week, date, year+day-of-year.</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>ab<span class="w"> </span>dateinfo
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>Usage: ab dateinfo [OPTIONS] COMMAND [ARGS]...
+<a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>
+<a id="__codelineno-66-3" name="__codelineno-66-3" href="#__codelineno-66-3"></a>  Print date info on date, year+doy or GPS week.
+<a id="__codelineno-66-4" name="__codelineno-66-4" href="#__codelineno-66-4"></a>
+<a id="__codelineno-66-5" name="__codelineno-66-5" href="#__codelineno-66-5"></a>Options:
+<a id="__codelineno-66-6" name="__codelineno-66-6" href="#__codelineno-66-6"></a>  --help  Show this message and exit.
+<a id="__codelineno-66-7" name="__codelineno-66-7" href="#__codelineno-66-7"></a>
+<a id="__codelineno-66-8" name="__codelineno-66-8" href="#__codelineno-66-8"></a>Commands:
+<a id="__codelineno-66-9" name="__codelineno-66-9" href="#__codelineno-66-9"></a>  gpsweek  Show date information based on GPS week.
+<a id="__codelineno-66-10" name="__codelineno-66-10" href="#__codelineno-66-10"></a>  ydoy     Show date information based on Year and day of year [DOY].
+<a id="__codelineno-66-11" name="__codelineno-66-11" href="#__codelineno-66-11"></a>  ymd      Show date information based on date.
+</code></pre></div>
+<h3 id="ab-dateinfo-ymd-ymd"><code>ab dateinfo ymd &lt;ymd&gt;</code><a class="headerlink" href="#ab-dateinfo-ymd-ymd" title="Permanent link">¶</a></h3>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>ab<span class="w"> </span>dateinfo<span class="w"> </span>ymd<span class="w"> </span><span class="m">2022</span>-08-07
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="p">{</span>
+<a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a><span class="w">    </span><span class="nt">"weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunday"</span><span class="p">,</span>
+<a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a><span class="w">    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-07"</span><span class="p">,</span>
+<a id="__codelineno-68-4" name="__codelineno-68-4" href="#__codelineno-68-4"></a><span class="w">    </span><span class="nt">"doy"</span><span class="p">:</span><span class="w"> </span><span class="mi">219</span><span class="p">,</span>
+<a id="__codelineno-68-5" name="__codelineno-68-5" href="#__codelineno-68-5"></a><span class="w">    </span><span class="nt">"iso_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span>
+<a id="__codelineno-68-6" name="__codelineno-68-6" href="#__codelineno-68-6"></a><span class="w">    </span><span class="nt">"iso_weekday"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<a id="__codelineno-68-7" name="__codelineno-68-7" href="#__codelineno-68-7"></a><span class="w">    </span><span class="nt">"gps_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">2222</span><span class="p">,</span>
+<a id="__codelineno-68-8" name="__codelineno-68-8" href="#__codelineno-68-8"></a><span class="w">    </span><span class="nt">"gps_weekday"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-68-9" name="__codelineno-68-9" href="#__codelineno-68-9"></a><span class="w">    </span><span class="nt">"gps_week_beg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-07"</span><span class="p">,</span>
+<a id="__codelineno-68-10" name="__codelineno-68-10" href="#__codelineno-68-10"></a><span class="w">    </span><span class="nt">"gps_week_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-13"</span>
+<a id="__codelineno-68-11" name="__codelineno-68-11" href="#__codelineno-68-11"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="ab-dateinfo-ydoy-ydoy"><code>ab dateinfo ydoy &lt;ydoy&gt;</code><a class="headerlink" href="#ab-dateinfo-ydoy-ydoy" title="Permanent link">¶</a></h3>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>ab<span class="w"> </span>dateinfo<span class="w"> </span>ydoy<span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="m">219</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="p">{</span>
+<a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a><span class="w">    </span><span class="nt">"weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunday"</span><span class="p">,</span>
+<a id="__codelineno-70-3" name="__codelineno-70-3" href="#__codelineno-70-3"></a><span class="w">    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-07"</span><span class="p">,</span>
+<a id="__codelineno-70-4" name="__codelineno-70-4" href="#__codelineno-70-4"></a><span class="w">    </span><span class="nt">"doy"</span><span class="p">:</span><span class="w"> </span><span class="mi">219</span><span class="p">,</span>
+<a id="__codelineno-70-5" name="__codelineno-70-5" href="#__codelineno-70-5"></a><span class="w">    </span><span class="nt">"iso_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span>
+<a id="__codelineno-70-6" name="__codelineno-70-6" href="#__codelineno-70-6"></a><span class="w">    </span><span class="nt">"iso_weekday"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<a id="__codelineno-70-7" name="__codelineno-70-7" href="#__codelineno-70-7"></a><span class="w">    </span><span class="nt">"gps_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">2222</span><span class="p">,</span>
+<a id="__codelineno-70-8" name="__codelineno-70-8" href="#__codelineno-70-8"></a><span class="w">    </span><span class="nt">"gps_weekday"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-70-9" name="__codelineno-70-9" href="#__codelineno-70-9"></a><span class="w">    </span><span class="nt">"gps_week_beg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-07"</span><span class="p">,</span>
+<a id="__codelineno-70-10" name="__codelineno-70-10" href="#__codelineno-70-10"></a><span class="w">    </span><span class="nt">"gps_week_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-13"</span>
+<a id="__codelineno-70-11" name="__codelineno-70-11" href="#__codelineno-70-11"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="ab-dateinfo-gpsweek-gps-week"><code>ab dateinfo gpsweek &lt;gps-week&gt;</code><a class="headerlink" href="#ab-dateinfo-gpsweek-gps-week" title="Permanent link">¶</a></h3>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>ab<span class="w"> </span>dateinfo<span class="w"> </span>gpsweek<span class="w"> </span><span class="m">2222</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="p">{</span>
+<a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a><span class="w">    </span><span class="nt">"weekday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunday"</span><span class="p">,</span>
+<a id="__codelineno-72-3" name="__codelineno-72-3" href="#__codelineno-72-3"></a><span class="w">    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-07"</span><span class="p">,</span>
+<a id="__codelineno-72-4" name="__codelineno-72-4" href="#__codelineno-72-4"></a><span class="w">    </span><span class="nt">"doy"</span><span class="p">:</span><span class="w"> </span><span class="mi">219</span><span class="p">,</span>
+<a id="__codelineno-72-5" name="__codelineno-72-5" href="#__codelineno-72-5"></a><span class="w">    </span><span class="nt">"iso_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span>
+<a id="__codelineno-72-6" name="__codelineno-72-6" href="#__codelineno-72-6"></a><span class="w">    </span><span class="nt">"iso_weekday"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<a id="__codelineno-72-7" name="__codelineno-72-7" href="#__codelineno-72-7"></a><span class="w">    </span><span class="nt">"gps_week"</span><span class="p">:</span><span class="w"> </span><span class="mi">2222</span><span class="p">,</span>
+<a id="__codelineno-72-8" name="__codelineno-72-8" href="#__codelineno-72-8"></a><span class="w">    </span><span class="nt">"gps_weekday"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-72-9" name="__codelineno-72-9" href="#__codelineno-72-9"></a><span class="w">    </span><span class="nt">"gps_week_beg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-07"</span><span class="p">,</span>
+<a id="__codelineno-72-10" name="__codelineno-72-10" href="#__codelineno-72-10"></a><span class="w">    </span><span class="nt">"gps_week_end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-08-13"</span>
+<a id="__codelineno-72-11" name="__codelineno-72-11" href="#__codelineno-72-11"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="tailing-the-autobernese-log-file">Tailing the AutoBernese log file<a class="headerlink" href="#tailing-the-autobernese-log-file" title="Permanent link">¶</a></h2>
+<p>Examine the tail of the AutoBernese log file to get more verbose output using:</p>
+<div class="highlight"><span class="filename">Command</span><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>ab<span class="w"> </span>logs
+</code></pre></div>
+<div class="highlight"><span class="filename">Output</span><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | OSLS00NOR_S_20230010000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-2" name="__codelineno-74-2" href="#__codelineno-74-2"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | OSLS00NOR_S_20230020000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-3" name="__codelineno-74-3" href="#__codelineno-74-3"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | POTS00DEU_R_20230010000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-4" name="__codelineno-74-4" href="#__codelineno-74-4"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | POTS00DEU_R_20230020000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-5" name="__codelineno-74-5" href="#__codelineno-74-5"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | WSRT00NLD_R_20230010000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-6" name="__codelineno-74-6" href="#__codelineno-74-6"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | WSRT00NLD_R_20230020000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-7" name="__codelineno-74-7" href="#__codelineno-74-7"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | WTZR00DEU_R_20230010000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-8" name="__codelineno-74-8" href="#__codelineno-74-8"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.data.ftp | WTZR00DEU_R_20230020000_01D_30S_MO.crx.gz already downloaded ...
+<a id="__codelineno-74-9" name="__codelineno-74-9" href="#__codelineno-74-9"></a>2023-06-28 11:38:12 | USERNAME | DEBUG | ab.cli | Finished downloading sources ...
+<a id="__codelineno-74-10" name="__codelineno-74-10" href="#__codelineno-74-10"></a>2023-06-28 13:28:51 | USERNAME | DEBUG | ab.cli | Show log tail ...
+</code></pre></div>
+<p>To exit, press <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascript/asciinema-player.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

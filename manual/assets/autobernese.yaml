@@ -1,0 +1,89 @@
+campaign:
+  directories:
+  - name: ATM
+  - name: BPE
+  - name: GEN
+    files:
+    - !Path [*CONFIG, OBSERV.SEL]
+    - !Path [*PAN, SESSIONS.SES]
+  - name: GRD
+  - name: OBS
+  - name: ORB
+  - name: ORX
+  - name: OUT
+  - name: RAW
+  - name: SOL
+  - name: STA
+
+troposphere:
+  ipath: &TROPOSPHERE_IPATH !Path [*D, VMF3, '1x1_OP_H', '{date.year}']
+  opath: &TROPOSPHERE_OPATH !Path [*D, VMF3, '1x1_OP_GRD', '{date.year}']
+
+sources:
+
+- identifier: EUREF54_20_STA
+  description: EUREF STA file from epncb
+  url: ftp://epncb.oma.be/pub/station/general/EUREF54_20.STA
+  destination: !Path [*D, REF54]
+  max_age: 1
+
+- identifier: BSW_MODEL
+  description: BSW Model data
+  url: ftp://ftp.aiub.unibe.ch/BSWUSER54/MODEL/
+  destination: *MODEL
+  filenames: ['*']
+  max_age: 1
+
+- identifier: BSW_CONFIG
+  description: BSW Configuration data
+  url: ftp://ftp.aiub.unibe.ch/BSWUSER54/CONFIG/
+  destination: *CONFIG
+  filenames: ['*']
+  max_age: 1
+
+- identifier: BSW_REF
+  description: Universal and BSW-specific antenna files
+  url: ftp://ftp.aiub.unibe.ch/BSWUSER54/REF/
+  destination: !Path [*D, REF54]
+  filenames:
+  - ANTENNA_I20.PCV
+  - I20.ATX
+  - FES2014b.BLQ
+
+  - IGB14.CRD
+  - IGB14.FIX
+  - IGB14.PSD
+  - IGB14.VEL
+
+  - IGS14.CRD
+  - IGS14.FIX
+  - IGS14.PSD
+  - IGS14.VEL
+
+  - IGS20.CRD
+  - IGS20.FIX
+  - IGS20.PSD
+  - IGS20.VEL
+
+  - IGB14_R.CRD
+  - IGB14_R.VEL
+
+  - IGS14_R.CRD
+  - IGS14_R.VEL
+
+  - IGS20_R.CRD
+  - IGS20_R.VEL
+  max_age: 1
+
+- identifier: VMF3
+  description: Troposphere mapping function (VMF3/grid/1x1/operational)
+  url: https://vmf.geo.tuwien.ac.at/trop_products/GRID/1x1/VMF3/VMF3_OP/{date.year}/VMF3_{date.year}{date.month:02d}{date.day:02d}.H{hour}
+  destination: *TROPOSPHERE_IPATH
+  parameters:
+    date: !DateRange { beg: 2024-06-01, end: 2024-06-01, extend_end_by: 1 }
+    hour: ['00', '06', '12', '18']
+
+station:
+  sitelogs: !Path [*D, sitelogs, '*.log']
+  individually_calibrated: []
+  output_sta_file: !Path [*D, station, sitelogs.STA]

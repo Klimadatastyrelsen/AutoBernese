@@ -1,0 +1,1321 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Joachim Mortensen">
+      
+      
+      
+        <link rel="prev" href="../install-autobernese/">
+      
+      
+        <link rel="next" href="../command-reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Quick start - GNSS-Process Automation with Bernese GNSS Software</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/asciinema-player.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#preparation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GNSS-Process Automation with Bernese GNSS Software" class="md-header__button md-logo" aria-label="GNSS-Process Automation with Bernese GNSS Software" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GNSS-Process Automation with Bernese GNSS Software
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quick start
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SDFIdk/AutoBernese" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    AutoBernese
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GNSS-Process Automation with Bernese GNSS Software" class="md-nav__button md-logo" aria-label="GNSS-Process Automation with Bernese GNSS Software" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    GNSS-Process Automation with Bernese GNSS Software
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SDFIdk/AutoBernese" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    AutoBernese
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User manual
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User manual
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install-autobernese/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install AutoBernese
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialise-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialise environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-campaign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the campaign
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the campaign">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recorded-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorded example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-configuration-for-the-example-campaign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The configuration for the EXAMPLE campaign
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Command-line reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../download-sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Download sources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contribute
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/system-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialise-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialise environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-campaign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the campaign
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the campaign">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recorded-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorded example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-configuration-for-the-example-campaign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The configuration for the EXAMPLE campaign
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Quick start</h1>
+
+<p>The purpose of this section is to give a quick demonstration of how to use
+AutoBernese to run PCF-files with the Bernese Processing Engine for a campaign.</p>
+<p>To get a feel for how AutoBernese works, when everything is set up, this section
+goes through running the PPP-script with the Bernese Processing Engine for the
+EXAMPLE campaign that comes bundled with the Bernese GNSS Software.</p>
+<h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">¶</a></h2>
+<p>Before proceeding, make sure that you have performed the following steps:</p>
+<ul>
+<li><a href="../install-autobernese/">Install AutoBernese</a>.</li>
+<li>Install the Bernese EXAMPLE campaign [see Bernese manual].</li>
+<li>Download <a href="../assets/campaign.yaml">this campaign configuration</a> to the
+    EXAMPLE-campaign directory [<code>$P/EXAMPLE</code>].</li>
+</ul>
+<p>What you have now is a configuration file that lets you run the default PPP.PCF
+file for the first two days available in the EXAMPLE campaign's interval.</p>
+<h3 id="initialise-environments">Initialise environments<a class="headerlink" href="#initialise-environments" title="Permanent link">¶</a></h3>
+<p>First, initialise the environments:</p>
+<ul>
+<li>Load your Bernese environment as defined in <code>LOADGPS.setvar</code>.</li>
+<li>Activate the AutoBernese <code>conda</code>/<code>mamba</code> environment [<code>ab</code>]</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Bernese user environment</p>
+<p>Make sure that you have configured a Bernese user environment
+for the active user. Run</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$EXE/configure.pm
+</code></pre></div>
+<p>and select option 3.
+AutoBernese will fail without a functional Bernese user environment.</p>
+</div>
+<h2 id="run-the-campaign">Run the campaign<a class="headerlink" href="#run-the-campaign" title="Permanent link">¶</a></h2>
+<p>To run the PCF file for each specified day, type the following in the terminal
+with the activated environments:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">(</span>ab<span class="o">)</span><span class="w"> </span>$<span class="w"> </span>ab<span class="w"> </span>campaign<span class="w"> </span>run<span class="w"> </span>EXAMPLE
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># (output) from BPE</span>
+</code></pre></div>
+<h3 id="recorded-example">Recorded example<a class="headerlink" href="#recorded-example" title="Permanent link">¶</a></h3>
+<p>Below is a demonstration of the process above:</p>
+<div id="demo"></div>
+
+<script>
+window.onload = () => {
+    let filename = '../assets/quick-start_run.cast';
+    let element_id = 'demo';
+    let options = {
+        speed: 2,
+        idleTimeLimit: 2,
+    };
+    AsciinemaPlayer.create(filename, document.getElementById(element_id), options);
+}
+</script>
+
+<h2 id="the-configuration-for-the-example-campaign">The configuration for the EXAMPLE campaign<a class="headerlink" href="#the-configuration-for-the-example-campaign" title="Permanent link">¶</a></h2>
+<p>The file that you downloaded to the EXAMPLE-campaign directory above is an
+example of a campaign-configuration file that AutoBernese uses to download
+campaign-specific data and configure and run the Bernese Processing Engine.</p>
+<details class="info">
+<summary>Expand to see the AutoBernese campaign-configuration file for the EXAMPLE campaign</summary>
+<div class="highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">`campaign.yaml`</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-2-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-2-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-2-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-2-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-2-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-2-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-2-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-2-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-2-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-2-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-2-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-2-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-2-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-2-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-2-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-2-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-2-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-2-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-2-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-2-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-2-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-2-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-2-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-2-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-2-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-2-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-2-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-2-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-2-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-2-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-2-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-2-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-2-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-2-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-2-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-2-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-2-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-2-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-2-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-2-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-2-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-2-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-2-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-2-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-2-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-2-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-2-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-2-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-2-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-2-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-2-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-2-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-2-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-2-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-2-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-2-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-2-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-2-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-2-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-2-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-2-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-2-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-2-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-2-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-2-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-2-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-2-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-2-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-2-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-2-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-2-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-2-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-2-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-2-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-2-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-2-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-2-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-2-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-2-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-2-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-2-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-2-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-2-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-2-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-2-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-2-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-2-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-2-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-2-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-2-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-2-100">100</a></span>
+<span class="normal"><a href="#__codelineno-2-101">101</a></span>
+<span class="normal"><a href="#__codelineno-2-102">102</a></span>
+<span class="normal"><a href="#__codelineno-2-103">103</a></span>
+<span class="normal"><a href="#__codelineno-2-104">104</a></span>
+<span class="normal"><a href="#__codelineno-2-105">105</a></span>
+<span class="normal"><a href="#__codelineno-2-106">106</a></span>
+<span class="normal"><a href="#__codelineno-2-107">107</a></span>
+<span class="normal"><a href="#__codelineno-2-108">108</a></span>
+<span class="normal"><a href="#__codelineno-2-109">109</a></span>
+<span class="normal"><a href="#__codelineno-2-110">110</a></span>
+<span class="normal"><a href="#__codelineno-2-111">111</a></span>
+<span class="normal"><a href="#__codelineno-2-112">112</a></span>
+<span class="normal"><a href="#__codelineno-2-113">113</a></span>
+<span class="normal"><a href="#__codelineno-2-114">114</a></span>
+<span class="normal"><a href="#__codelineno-2-115">115</a></span>
+<span class="normal"><a href="#__codelineno-2-116">116</a></span>
+<span class="normal"><a href="#__codelineno-2-117">117</a></span>
+<span class="normal"><a href="#__codelineno-2-118">118</a></span>
+<span class="normal"><a href="#__codelineno-2-119">119</a></span>
+<span class="normal"><a href="#__codelineno-2-120">120</a></span>
+<span class="normal"><a href="#__codelineno-2-121">121</a></span>
+<span class="normal"><a href="#__codelineno-2-122">122</a></span>
+<span class="normal"><a href="#__codelineno-2-123">123</a></span>
+<span class="normal"><a href="#__codelineno-2-124">124</a></span>
+<span class="normal"><a href="#__codelineno-2-125">125</a></span>
+<span class="normal"><a href="#__codelineno-2-126">126</a></span>
+<span class="normal"><a href="#__codelineno-2-127">127</a></span>
+<span class="normal"><a href="#__codelineno-2-128">128</a></span>
+<span class="normal"><a href="#__codelineno-2-129">129</a></span>
+<span class="normal"><a href="#__codelineno-2-130">130</a></span>
+<span class="normal"><a href="#__codelineno-2-131">131</a></span>
+<span class="normal"><a href="#__codelineno-2-132">132</a></span>
+<span class="normal"><a href="#__codelineno-2-133">133</a></span>
+<span class="normal"><a href="#__codelineno-2-134">134</a></span>
+<span class="normal"><a href="#__codelineno-2-135">135</a></span>
+<span class="normal"><a href="#__codelineno-2-136">136</a></span>
+<span class="normal"><a href="#__codelineno-2-137">137</a></span>
+<span class="normal"><a href="#__codelineno-2-138">138</a></span>
+<span class="normal"><a href="#__codelineno-2-139">139</a></span>
+<span class="normal"><a href="#__codelineno-2-140">140</a></span>
+<span class="normal"><a href="#__codelineno-2-141">141</a></span>
+<span class="normal"><a href="#__codelineno-2-142">142</a></span>
+<span class="normal"><a href="#__codelineno-2-143">143</a></span>
+<span class="normal"><a href="#__codelineno-2-144">144</a></span>
+<span class="normal"><a href="#__codelineno-2-145">145</a></span>
+<span class="normal"><a href="#__codelineno-2-146">146</a></span>
+<span class="normal"><a href="#__codelineno-2-147">147</a></span>
+<span class="normal"><a href="#__codelineno-2-148">148</a></span>
+<span class="normal"><a href="#__codelineno-2-149">149</a></span>
+<span class="normal"><a href="#__codelineno-2-150">150</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>metadata:
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  version: &amp;version 0.5.0
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>  username: &amp;username USERNAME
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>  created: &amp;created 2024-04-08
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>  template: &amp;template example
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>  campaign: &amp;campaign EXAMPLE
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>  beg: &amp;beg 2019-02-13
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>  end: &amp;end 2019-02-14
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>custom:
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>  dates: &amp;dates
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>  - 2019-02-13
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>  - 2019-02-14
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>  - 2020-06-27
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>  - 2020-06-28
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>  - 2021-04-05
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>  - 2021-04-06
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>tasks:
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>- identifier: PPP
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>  description: Precise-Point Positioning
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>  run: RunBPE
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>  arguments:
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a>    pcf_file: PPP
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>    campaign: *campaign
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a>    year: '{date.year}'
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a>    sysout: 'PPP_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a>    status: 'PPP_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a>    taskid: 'PPP_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a>  parameters:
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a>    date: dates
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a>- identifier: RNX2SNX
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a>  description: RINEX to SINEX
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a>  run: RunBPE
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a>  arguments:
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a>    pcf_file: RNX2SNX
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a>    campaign: *campaign
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a>    year: '{date.year}'
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a>    sysout: 'RNX2SNX_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a>    status: 'RNX2SNX_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a>    taskid: 'R2S_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a>  parameters:
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a>    date: dates
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a>- identifier: BASTST
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a>  description: |-
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a>    Baseline by baseline processing for trouble shooting
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a>  run: RunBPE
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a>  arguments:
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a>    pcf_file: BASTST
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a>    campaign: *campaign
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a>    year: '{date.year}'
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a>    sysout: 'BASTST_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a>    status: 'BASTST_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a>    taskid: 'BASTST_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a>  parameters:
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a>    date: dates
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a>
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a>- identifier: CLKDET
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a>  description: |-
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a>    Zero-difference network solution providing clock corrections
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a>  run: RunBPE
+<a id="__codelineno-2-68" name="__codelineno-2-68"></a>  arguments:
+<a id="__codelineno-2-69" name="__codelineno-2-69"></a>    pcf_file: CLKDET
+<a id="__codelineno-2-70" name="__codelineno-2-70"></a>    campaign: *campaign
+<a id="__codelineno-2-71" name="__codelineno-2-71"></a>    year: '{date.year}'
+<a id="__codelineno-2-72" name="__codelineno-2-72"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-73" name="__codelineno-2-73"></a>    sysout: 'CLKDET_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-74" name="__codelineno-2-74"></a>    status: 'CLKDET_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-75" name="__codelineno-2-75"></a>    taskid: 'CLKDET_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-76" name="__codelineno-2-76"></a>  parameters:
+<a id="__codelineno-2-77" name="__codelineno-2-77"></a>    date: dates
+<a id="__codelineno-2-78" name="__codelineno-2-78"></a>
+<a id="__codelineno-2-79" name="__codelineno-2-79"></a>- identifier: IONDET
+<a id="__codelineno-2-80" name="__codelineno-2-80"></a>  description: |-
+<a id="__codelineno-2-81" name="__codelineno-2-81"></a>    Zero-difference network solution providing station-wise, regional, or global
+<a id="__codelineno-2-82" name="__codelineno-2-82"></a>    ionosphere maps and the related biases
+<a id="__codelineno-2-83" name="__codelineno-2-83"></a>  run: RunBPE
+<a id="__codelineno-2-84" name="__codelineno-2-84"></a>  arguments:
+<a id="__codelineno-2-85" name="__codelineno-2-85"></a>    pcf_file: IONDET
+<a id="__codelineno-2-86" name="__codelineno-2-86"></a>    campaign: *campaign
+<a id="__codelineno-2-87" name="__codelineno-2-87"></a>    year: '{date.year}'
+<a id="__codelineno-2-88" name="__codelineno-2-88"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-89" name="__codelineno-2-89"></a>    sysout: 'IONDET_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-90" name="__codelineno-2-90"></a>    status: 'IONDET_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-91" name="__codelineno-2-91"></a>    taskid: 'IONDET_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-92" name="__codelineno-2-92"></a>  parameters:
+<a id="__codelineno-2-93" name="__codelineno-2-93"></a>    date: dates
+<a id="__codelineno-2-94" name="__codelineno-2-94"></a>
+<a id="__codelineno-2-95" name="__codelineno-2-95"></a>- identifier: LEOPOD
+<a id="__codelineno-2-96" name="__codelineno-2-96"></a>  description: |-
+<a id="__codelineno-2-97" name="__codelineno-2-97"></a>    Precise Orbit Determination for a Low Earth Orbiting Satellites based on
+<a id="__codelineno-2-98" name="__codelineno-2-98"></a>    on-board GPS-measurements with phase ambiguity resolution
+<a id="__codelineno-2-99" name="__codelineno-2-99"></a>  run: RunBPE
+<a id="__codelineno-2-100" name="__codelineno-2-100"></a>  arguments:
+<a id="__codelineno-2-101" name="__codelineno-2-101"></a>    pcf_file: LEOPOD
+<a id="__codelineno-2-102" name="__codelineno-2-102"></a>    campaign: *campaign
+<a id="__codelineno-2-103" name="__codelineno-2-103"></a>    year: '{date.year}'
+<a id="__codelineno-2-104" name="__codelineno-2-104"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-105" name="__codelineno-2-105"></a>    sysout: 'LEOPOD_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-106" name="__codelineno-2-106"></a>    status: 'LEOPOD_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-107" name="__codelineno-2-107"></a>    taskid: 'LEOPOD_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-108" name="__codelineno-2-108"></a>  parameters:
+<a id="__codelineno-2-109" name="__codelineno-2-109"></a>    date: !DateRange {beg: *beg, end: *end}
+<a id="__codelineno-2-110" name="__codelineno-2-110"></a>
+<a id="__codelineno-2-111" name="__codelineno-2-111"></a>- identifier: SLRVAL
+<a id="__codelineno-2-112" name="__codelineno-2-112"></a>  description: |-
+<a id="__codelineno-2-113" name="__codelineno-2-113"></a>    Validation of an existing GNSS or LEO orbit using SLR measurements
+<a id="__codelineno-2-114" name="__codelineno-2-114"></a>  run: RunBPE
+<a id="__codelineno-2-115" name="__codelineno-2-115"></a>  arguments:
+<a id="__codelineno-2-116" name="__codelineno-2-116"></a>    pcf_file: SLRVAL
+<a id="__codelineno-2-117" name="__codelineno-2-117"></a>    campaign: *campaign
+<a id="__codelineno-2-118" name="__codelineno-2-118"></a>    year: '{date.year}'
+<a id="__codelineno-2-119" name="__codelineno-2-119"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-120" name="__codelineno-2-120"></a>    sysout: 'SLRVAL_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-121" name="__codelineno-2-121"></a>    status: 'SLRVAL_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-122" name="__codelineno-2-122"></a>    taskid: 'SLRVAL_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-123" name="__codelineno-2-123"></a>  parameters:
+<a id="__codelineno-2-124" name="__codelineno-2-124"></a>    date: dates
+<a id="__codelineno-2-125" name="__codelineno-2-125"></a>
+<a id="__codelineno-2-126" name="__codelineno-2-126"></a>- identifier: ITRF
+<a id="__codelineno-2-127" name="__codelineno-2-127"></a>  description: |-
+<a id="__codelineno-2-128" name="__codelineno-2-128"></a>    Derives a coordinate and linear velocity approximation from the ITRF
+<a id="__codelineno-2-129" name="__codelineno-2-129"></a>    solution containing non-linear PSD corrections
+<a id="__codelineno-2-130" name="__codelineno-2-130"></a>  run: RunBPE
+<a id="__codelineno-2-131" name="__codelineno-2-131"></a>  arguments:
+<a id="__codelineno-2-132" name="__codelineno-2-132"></a>    pcf_file: ITRF
+<a id="__codelineno-2-133" name="__codelineno-2-133"></a>    campaign: *campaign
+<a id="__codelineno-2-134" name="__codelineno-2-134"></a>    year: '{date.year}'
+<a id="__codelineno-2-135" name="__codelineno-2-135"></a>    session: '{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-136" name="__codelineno-2-136"></a>    sysout: 'ITRF_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-137" name="__codelineno-2-137"></a>    status: 'ITRF_{date.doy:0&gt;3d}0.RUN'
+<a id="__codelineno-2-138" name="__codelineno-2-138"></a>    taskid: 'ITRF_{date.doy:0&gt;3d}0'
+<a id="__codelineno-2-139" name="__codelineno-2-139"></a>  parameters:
+<a id="__codelineno-2-140" name="__codelineno-2-140"></a>    date: dates
+<a id="__codelineno-2-141" name="__codelineno-2-141"></a>
+<a id="__codelineno-2-142" name="__codelineno-2-142"></a>sources:
+<a id="__codelineno-2-143" name="__codelineno-2-143"></a>
+<a id="__codelineno-2-144" name="__codelineno-2-144"></a>- identifier: ITRF14
+<a id="__codelineno-2-145" name="__codelineno-2-145"></a>  description: IERS data needed for the EXAMPLE campaign
+<a id="__codelineno-2-146" name="__codelineno-2-146"></a>  url: https://datacenter.iers.org/products/reference-systems/terrestrial/itrf/itrf2014/
+<a id="__codelineno-2-147" name="__codelineno-2-147"></a>  filenames:
+<a id="__codelineno-2-148" name="__codelineno-2-148"></a>  - ITRF2014-IGS-TRF.SNX.gz  # 1.4 GB
+<a id="__codelineno-2-149" name="__codelineno-2-149"></a>  - ITRF2014-psd-gnss.dat  # 38 KB
+<a id="__codelineno-2-150" name="__codelineno-2-150"></a>  destination: !Path [*D, ITRF14]
+</code></pre></div></td></tr></tbody></table></div>
+</details>
+<p>The three standard sections in this file are <code>metadata</code>, which contain data
+about the campaign, <code>tasks</code> which contain a list of tasks to run for the
+campaign, and <code>sources</code>, which contain a list of data sources.</p>
+<div class="admonition warning">
+<p class="admonition-title">IMPORTANT</p>
+<p>For the EXAMPLE campaign, the provided data cover several two-day intervals
+instead of having a single interval, that can be defined by the beginning and
+end dates in the <code>metadata</code>section. AutoBernese only supports creating campaigns
+with a single date interval, but the campaign configuration can easily be
+amended to accommodate the case, where several arbitrary dates are used.</p>
+<p>In this case, a custom section, arbitrarily named <code>custom</code>, has been added, in
+which a YAML anchor <code>&amp;dates</code> is defined for the sequence of dates that all
+<code>.PCF</code> files, except <code>LEOPOD.PCF</code>, use in the EXAMPLE campaign.</p>
+<p>This section is not 'seen' by AutoBernese, since it does not use this key, when
+loading the configuration. But the configuration settings that use the YAML
+alias <code>*dates</code> do have its values inserted, before being read by AutoBernese.</p>
+</div>
+<p>See a short description of each section below or an expanded description in the
+section on <a href="../configuration-files/#campaign-configuration">campaign-specific configuration files</a>:</p>
+<ul>
+<li>
+<p>The <code>metadata</code> section contains data about the context in which the campaign
+    was created, if it was created by AutoBernese. With YAML anchors
+    [<code>&amp;&lt;anchor&gt;</code>], information such as the campaign directory [here,  <code>EXAMPLE</code>]
+    and the date interval [<code>beg</code> and <code>end</code>] covered by the campaign can be
+    re-used later in the document</p>
+<p>Here, the beginning and end dates define an interval in which there are data
+for the <code>LEOPOD.PCF</code> file in the EXAMPLE campaign.</p>
+</li>
+<li>
+<p>The <code>custom</code> section, as explained above is not a part of AutoBernese, but a
+    useful construct, that works as a container for manually-set-up data.</p>
+</li>
+<li>
+<p>The <code>tasks</code> section contains short definitions of each BPE process to run,
+    and in which the details depend on the input dates that the <code>.PCF</code> file
+    should run for.</p>
+</li>
+<li>
+<p>The <code>sources</code> section define external or otherwise remote data sources
+    needed for the campaign. The EXAMPLE campaign does not come with all needed
+    data by default, and the missing source is defined as a single entry here.</p>
+</li>
+</ul>
+<p>To learn more about how to configure campaigns, go to <a href="../configuration-files/">Configuration files</a>. To
+learn how to use AutoBernese to create Bernese campaigns based on templates, go
+<a href="../command-reference/">Command-line reference</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascript/asciinema-player.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
